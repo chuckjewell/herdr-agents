@@ -62,11 +62,11 @@ Integrations first (`herdr integration status` / `herdr integration install …`
 
 ## 4. Onboard the lead (same as everyone)
 
-EMAIL the lead **pane ID** (`$HERDR_AGENTS_KIT/examples/onboard-ack.md`): read herdr + agent-behavior + conduct, hash ACK, state **role from the tab**, idle. That *is* lead onboard. No extra ceremony. Harvest ACK or they are not onboarded.
+EMAIL the lead **pane ID** (`$HERDR_AGENTS_KIT/examples/onboard-ack.md`): full-read **official herdr** + **agent-behavior** (path+sha256), ACK MATCH, state **role from the tab**, idle. That *is* lead onboard. No extra ceremony. Harvest ACK or they are not onboarded.
 
 ## 5. User starts the rest; lead onboards them
 
-Ask the user to start the desired CLI in every other pane. Then EMAIL the lead: onboard those panes the same way; harvest ACKs; idle. You (setup agent) do not dual-prompt seats unless the lead is unavailable.
+Ask the user to start the desired CLI in every other pane. Then EMAIL the lead: onboard those panes the **same way** — official herdr skill + agent-behavior skill, EMAIL role ACK (`examples/onboard-ack.md`); harvest ACKs; idle. You (setup agent) do not dual-prompt seats unless the lead is unavailable.
 
 Product packets only after the roll-call is in.
 

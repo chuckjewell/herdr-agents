@@ -9,7 +9,7 @@ This is a **planning / air-traffic** job. Use a **strong** model (the same class
 ```
 Read $HERDR_AGENTS_KIT/skills/team-onboarding/SKILL.md (or <kit>/skills/team-onboarding/SKILL.md) and run it.
 
-You are doing first-time team standup: design session vs the kit baselines, write roster/skills, configure Herdr, ask me to start the lead CLI then the rest, onboard the lead like any seat, then have the lead onboard the team. Do not start CLIs for me. Do not merge.
+You are doing first-time team standup: design session vs the kit baselines, write roster/skills, configure Herdr, ask me to start the lead CLI then the rest. Onboard the lead with official herdr + agent-behavior (EMAIL role ACK). Then have the lead onboard every other pane with those same two skills. Do not start CLIs for me. Do not merge.
 ```
 
 4. Answer its design questions. When it asks, start the **lead** CLI in the lead tab, then the others.
