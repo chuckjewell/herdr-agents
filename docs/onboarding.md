@@ -1,6 +1,6 @@
 # Onboard a workspace
 
-The walk is the **`team-onboarding` skill** (`skills/team-onboarding/SKILL.md`). Occupants load that. This page is the human index.
+The walk is the **`team-onboarding` skill** (`skills/team-onboarding/SKILL.md`). The **setup ATC** loads that. Seats load official herdr + agent-behavior. This page is the human index.
 
 1. Design session: user needs vs our baselines (`workspaces.md`, Os/App examples). Keep our **lead** unless they have a better concept.
 2. Write team skills: installer `--repo`, AGENTS snippet, roster markdown. Seats share herdr+conduct; role = tab.

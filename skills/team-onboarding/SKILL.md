@@ -66,7 +66,7 @@ EMAIL the lead **pane ID** (`$HERDR_AGENTS_KIT/examples/onboard-ack.md`): full-r
 
 ## 5. User starts the rest; lead onboards them
 
-Ask the user to start the desired CLI in every other pane. Then EMAIL the lead: onboard those panes the **same way** — official herdr skill + agent-behavior skill, EMAIL role ACK (`examples/onboard-ack.md`); harvest ACKs; idle. You (setup agent) do not dual-prompt seats unless the lead is unavailable.
+Ask the user to start the desired CLI in every other pane. Then EMAIL the lead: onboard those panes the **same way** — official herdr skill + agent-behavior skill, EMAIL role ACK (`$HERDR_AGENTS_KIT/examples/onboard-ack.md`); harvest ACKs; idle. You (setup agent) do not dual-prompt seats unless the lead is unavailable.
 
 Product packets only after the roll-call is in.
 
@@ -76,4 +76,4 @@ Same skill from step 1. App does not inherit Os's roll-call. OverSeer is a tiny 
 
 ## Later (not this skill)
 
-Day-to-day pane onboard and swaps: `skills/agent-behavior/SKILL.md` (Pane onboard). Same EMAIL template.
+Day-to-day pane onboard and swaps: `$HERDR_AGENTS_KIT/skills/agent-behavior/SKILL.md` (Pane onboard). Same EMAIL template. Same two skills (herdr + agent-behavior).
