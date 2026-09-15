@@ -2,11 +2,9 @@
 
 Named seats in [Herdr](https://herdr.dev), EMAIL packets between them, two independent reviews, then merge.
 
-| | |
-|---|---|
-| Herdr | Workspaces, tabs, panes. Occupant lifecycle. |
-| This repo | Who sits where, and how work is handed off. |
-| Your `AGENTS.md` | Product rules. Agents load these from the pane cwd. |
+- **Herdr** — workspaces, tabs, panes, occupant lifecycle.
+- **This repo** — who sits where, and how work is handed off.
+- **Your `AGENTS.md`** — product rules. Agents load these from the pane cwd.
 
 How that handoff works (and how to change it): [`docs/conductor-loop.md`](docs/conductor-loop.md). That's for you, not for agents.
 
