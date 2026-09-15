@@ -14,7 +14,7 @@ Herdr does not store Chuck/Astra/Process doctrine. Occupants load whatever `AGEN
 
 **The Herdr skill is what makes an agent good at building the rooms.** Give a pane `skills/herdr/SKILL.md` plus a roster (who sits where) and it will create workspaces, named tabs, and started agents the way we do here. This kit's extra docs are *which seats* and *how they hand work*, not a substitute for that skill.
 
-Our `skills/herdr/SKILL.md` is a **compressed rewrite** of the official skill at [herdr `v0.9.0`](https://github.com/herdrdev/herdr/blob/v0.9.0/skills/herdr/SKILL.md) (upstream ~12.6K; ours 4614 bytes, hash `b9f7012f…`). Same rules, denser, plus wait-vs-packet, blocked-dialog authorization, and PATH/runtime-sync for child tools. For verbose worked examples, read upstream; for day-to-day occupant load, use the copy in this repo. Not a byte-identical vendor file.
+Our `skills/herdr/SKILL.md` is [herdr `v0.9.0`](https://github.com/herdrdev/herdr/blob/v0.9.0/skills/herdr/SKILL.md) **plus** campaign extras (blocked-dialog authorization, receipt transport, PATH/runtime-sync, sticky `done` ≠ packet done, no skill hot-reload via reset). Setup examples from upstream are kept so an agent can still stand up rooms well. Not a byte-identical vendor file.
 
 ## Why this exists
 
