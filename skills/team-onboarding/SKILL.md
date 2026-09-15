@@ -16,7 +16,31 @@ Load the **official** Herdr skill before any `herdr` mutate (`npx skills add her
 
 Each **new workspace** (Os, App, OverSeer, a friend's team) repeats this whole skill. Do not skip the design session because "we already have Os."
 
-This walk is **multi-turn**. After each human gate, stop and wait. When they say continue (or start a CLI / confirm a roster), resume the **last unfinished step**. Do not restart from step 1 unless they say the roster changed.
+This walk is **multi-turn**. After each human gate, stop and wait. When they say continue (or start a CLI / confirm a roster), resume the **last unfinished step**. Do not restart from step 1 unless they say the roster changed. Do not skip a phase. Do not start phase N until its **gate** is met.
+
+### Phases (order is mandatory)
+
+| # | Phase | Gate before this phase | Waiting on human |
+|---|---|---|---|
+| 1 | Design (project type, starter roster, extras, loop fit) | — | Comfortable + **ready to build** |
+| 2 | Write skills + roster file + any `conduct`/AGENTS edits | Explicit ready-to-build | Confirm files if you cannot write |
+| 3 | Herdr workspace + named tabs (empty shells) | Phase 2 files in place | — (you do this) |
+| 4 | User starts **lead** CLI | Tabs exist | Start lead agent in lead tab |
+| 5 | Onboard lead (herdr + agent-behavior, EMAIL ACK) | `herdr agent get` lead = live | — (you EMAIL; they ACK) |
+| 6 | User starts the **other** CLIs | Lead onboard ACK harvested | Start remaining agents |
+| 7 | Lead onboards the rest (same two skills) | Those panes live | — (lead EMAIL; you harvest) |
+
+**Status to the human** at every stop (educate, don't assume they remember):
+
+```
+WHERE WE ARE: phase N — <name>
+JUST FINISHED: …
+GATE FOR NEXT: …
+WAITING ON YOU: …   (or none)
+STILL LEFT: phase N+1 … through 7
+```
+
+Do not create Herdr tabs (phase 3) before phase 1 go-ahead and phase 2. Do not onboard a pane that is not live. Product packets only after phase 7.
 
 ## 1. Design session (needs vs baselines)
 

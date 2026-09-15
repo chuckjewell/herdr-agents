@@ -20,6 +20,8 @@ You are doing first-time team standup: design session vs the kit baselines, writ
 5. When it asks, start the **lead** CLI in the lead tab. Tell it the pane is live. It onboards the lead.
 6. When it asks, start the other CLIs. Tell it those panes are live. It tells the lead to onboard them.
 
+It should tell you **where you are**, what just finished, and what is still left after every stop.
+
 **If it stops mid-walk** (layout done, then idle; or context compact), paste:
 
 ```
