@@ -14,8 +14,10 @@ Portable team loop for Herdr (or any visible multi-agent layout). Product-specif
 - One WIP per lane; one writer per overlapping surface.
 - One finalizer (lead) at a time for the default branch.
 - Dual independent review (semantic/source **and** hostile/repro) plus written Process before merge.
-- Runtime `done` is not a receipt. Close a packet only on durable path + sha256 delivered to the requester.
+- Runtime `done` is not a receipt. Close a packet only on durable path + sha256 delivered to the requester. `TO:` headers are not delivery.
 - Do not prompt `working` panes. Do not invent work on a quiet poll.
+- A stand-down retires a role. It does not retract artifacts already written; say what was touched.
+- Skill file edits do not update running occupants. Adoption is path+sha256 and a full-read ACK, not a session reset.
 
 ## Every lane event
 

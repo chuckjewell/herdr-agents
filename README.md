@@ -14,7 +14,7 @@ Herdr does not store Chuck/Astra/Process doctrine. Occupants load whatever `AGEN
 
 **The Herdr skill is what makes an agent good at building the rooms.** Give a pane `skills/herdr/SKILL.md` plus a roster (who sits where) and it will create workspaces, named tabs, and started agents the way we do here. This kit's extra docs are *which seats* and *how they hand work*, not a substitute for that skill.
 
-Our `skills/herdr/SKILL.md` is [herdr `v0.9.0`](https://github.com/herdrdev/herdr/blob/v0.9.0/skills/herdr/SKILL.md) plus extras added as they bit us. Setup examples from upstream stay so an agent can still stand up rooms. What we added and why: [`docs/herdr-skill-delta.md`](docs/herdr-skill-delta.md). Not a byte-identical vendor file.
+Our `skills/herdr/SKILL.md` is [herdr `v0.9.0`](https://github.com/herdrdev/herdr/blob/v0.9.0/skills/herdr/SKILL.md) with a handful of inserts. We keep upstream’s wait/stall/blocked/server rules as written. What we added and why: [`docs/herdr-skill-delta.md`](docs/herdr-skill-delta.md).
 
 ## Why this exists
 
