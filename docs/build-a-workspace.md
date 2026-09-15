@@ -4,11 +4,7 @@ This page is a seating-chart recipe for an agent that already loaded the officia
 
 Load the official Herdr skill first (`npx skills add herdrdev/herdr --skill herdr -g`). Extra rules (tab titles, sticky `done`, live `get`) are in `agent-behavior`. Do not fork herdr.
 
-`--no-focus` on creates so you do not steal the user’s tab. Do not close panes you did not create. The installed `herdr` binary is the syntax authority (`herdr --help`). Never run bare `herdr` (that attaches the TUI).
-
-The installed binary is syntax authority. Run `herdr --help` and `herdr workspace` / `herdr tab` / `herdr agent` / `herdr pane` with **no subcommand** if flags may have changed. Never bare `herdr` (TUI attach).
-
-Preserve the user's focus: `--no-focus` on creates. Do not close panes you did not create.
+`--no-focus` on creates so you do not steal the user’s tab. Do not close panes you did not create. The installed `herdr` binary is the syntax authority (`herdr --help`). If flags may have changed, run `herdr workspace` / `herdr tab` / `herdr agent` / `herdr pane` with no subcommand. Never run bare `herdr` (that attaches the TUI).
 
 ## 0. Precheck
 
