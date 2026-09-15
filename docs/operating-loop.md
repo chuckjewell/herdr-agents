@@ -2,7 +2,7 @@
 
 Layout is cheap. **Coordination** is the product. Full story of *our* loop (busy lanes, dual review, Process, merge, how to change it): [`conductor-loop.md`](conductor-loop.md).
 
-The loop is **split**: official herdr skill = multiplexer; `agent-behavior` = ATC steps; `conduct` = EMAIL + dual + Process.
+The loop is **split**: official herdr skill = multiplexer; `agent-behavior` = air traffic control (ATC) steps; `conduct` = EMAIL + dual + Process.
 
 ## Roles (portable)
 

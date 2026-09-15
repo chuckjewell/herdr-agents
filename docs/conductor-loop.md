@@ -15,7 +15,7 @@ Compact cheat: [`operating-loop.md`](operating-loop.md). What agents actually lo
 | **`conduct`** | How *we* shape that loop: EMAIL, WIP=1, dual independent review, Process written-law, one merge lease. |
 | **`process` skill** | Occupant who *is* Process: pins and receipts, not a third product grade. |
 
-Herdr does not know “reviewer” or “merge.” It only knows panes. The split is: **herdr moves bytes in terminals; agent-behavior is ATC; conduct is our review/merge policy.**
+Herdr does not know “reviewer” or “merge.” It only knows panes. The split is: **herdr moves bytes in terminals; agent-behavior is air traffic control (ATC); conduct is our review/merge policy.**
 
 ## The movie
 

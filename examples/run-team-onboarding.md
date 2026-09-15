@@ -1,6 +1,6 @@
 # How to run team-onboarding
 
-This is a **planning / air-traffic** job. Use a **strong** model (the same class you would pick for lead/ATC), not a cheap builder.
+This is a **planning / air traffic control (ATC)** job. Use a **strong** model (the same class you would pick for lead/ATC), not a cheap builder.
 
 1. In Herdr, open a pane. Start that agent in the shell (`grok`, `claude`, `codex`, …).
 2. Official Herdr skill already installed (`npx skills add herdrdev/herdr --skill herdr -g`). Team extras are in agent-behavior, not a herdr fork.

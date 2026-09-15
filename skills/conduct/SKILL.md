@@ -7,7 +7,7 @@ description: >
 
 # Conduct wire
 
-Portable team loop for Herdr (or any visible multi-agent layout). Product-specific gates stay in the repo's `AGENTS.md`. This file is **our** review/merge policy — edit it to match yours. ATC steps: `agent-behavior`. Pane lifecycle: official herdr skill. Humans read `docs/conductor-loop.md` (not a skill).
+Portable team loop for Herdr (or any visible multi-agent layout). Product-specific gates stay in the repo's `AGENTS.md`. This file is **our** review/merge policy — edit it to match yours. Air traffic control (ATC) steps: `agent-behavior`. Pane lifecycle: official herdr skill. Humans read `docs/conductor-loop.md` (not a skill).
 
 ## Invariants
 

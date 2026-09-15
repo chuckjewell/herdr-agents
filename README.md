@@ -41,7 +41,7 @@ That is Herdr’s own installer; it places the skill where Claude, Codex, Cursor
 git clone <this-repo> ~/code/herdr-agents
 cd ~/code/herdr-agents
 chmod +x scripts/install-skills.sh
-./scripts/install-skills.sh                 # ~/.agents/skills so the ATC pane can find team-onboarding
+./scripts/install-skills.sh                 # ~/.agents/skills so the standup pane can find team-onboarding
 ./scripts/install-skills.sh --repo /path/to/product
 ```
 
@@ -49,7 +49,7 @@ chmod +x scripts/install-skills.sh
 
 ### 3. Run team-onboarding with a strong agent
 
-Standup is **planning / air traffic control**. Use a high-quality model (the class you want for lead), not a cheap builder.
+Standup is **planning / air traffic control (ATC)**. Use a high-quality model (the class you want for lead), not a cheap builder.
 
 1. In Herdr, start that agent in a pane.
 2. Paste the prompt in [`examples/run-team-onboarding.md`](examples/run-team-onboarding.md) (point it at this kit’s `skills/team-onboarding/SKILL.md`).
@@ -72,7 +72,7 @@ Not team-onboarding. Exit Codex, run `grok` in that shell, tell the **lead** to 
 | Path | When you need it |
 |---|---|
 | [`scripts/install-skills.sh`](scripts/install-skills.sh) | Team skills only (not official herdr) |
-| [`examples/run-team-onboarding.md`](examples/run-team-onboarding.md) | Paste to a strong ATC agent |
+| [`examples/run-team-onboarding.md`](examples/run-team-onboarding.md) | Paste to a strong air-traffic-control (ATC) agent |
 | [`docs/build-a-workspace.md`](docs/build-a-workspace.md) | Layout recipe used by team-onboarding |
 | [`docs/workspaces.md`](docs/workspaces.md) | Os / App / OverSeer baselines |
 | [`docs/operating-loop.md`](docs/operating-loop.md) | Compact packet/harvest cheat |
