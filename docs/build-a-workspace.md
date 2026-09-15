@@ -60,7 +60,7 @@ herdr pane split --pane <pane_id> --direction right --cwd "$PWD" --no-focus
 
 ## 3. Start agents
 
-The pane must be an **interactive shell**. In that terminal, run the agent CLI (`grok`, `claude`, `codex`, `cursor`, …). If `herdr integration status` shows that kind installed, Herdr recognizes it.
+The pane must be an **interactive shell**. **Ask the user** to start their desired agent in each pane (`grok`, `claude`, `codex`, …). Do not start CLIs for them unless they asked. If the integration is installed, Herdr recognizes the kind.
 
 Optional: `herdr agent` name the occupant after it is live (`[a-z][a-z0-9_-]{0,31}`). Use the **role**, not the vendor (`tools`, not `cursor2`).
 

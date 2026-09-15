@@ -1,6 +1,6 @@
 ---
 name: agent-behavior
-description: Agent operating conventions for repository navigation, evidence-backed coordination, and reusable workflow learning. Apply during coding and multi-agent delivery.
+description: Agent operating conventions, day-to-day pane onboard (swap/new occupant EMAIL ACK), and reusable workflow learning. Apply during coding and multi-agent delivery. Not the first-time team standup (use team-onboarding).
 ---
 
 # Agent operations
@@ -14,6 +14,14 @@ Skills supply method, not additional permission. Existing named lanes before new
 - NAV: use available project index for symbol/caller/impact queries; refresh after relevant changes when writes are allowed. Immutable review → exact git objects, no index mutation. Literal search → native fast search. Missing tooling ≠ setup project.
 - ROAM: discover installed syntax as needed; retrieve/context/uses/preflight/impact/diff cover normal work. No mandatory full tour, health scan or generic command catalog per task.
 - ID: when using MCP Agent Mail, register explicit stable `{identity}-{client}[-instance]`; no random replacement identities.
+
+## Pane onboard (day-to-day)
+
+Not the first-time workspace standup (`team-onboarding`). Use this after a **new occupant** in an existing seat: swap, crash, first CLI in a pane the user just started.
+
+EMAIL that pane (`examples/onboard-ack.md`): herdr + this skill + conduct path+sha256; ACK **role from tab/roster**, not vendor. Harvest ACK before product packets. Do not prompt `working`.
+
+Swap: user exits the old CLI, starts the new one in that shell, asks the **lead** to onboard that pane. Same role. No team reset.
 
 ## Conductor loop
 

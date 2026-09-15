@@ -6,4 +6,4 @@
 | [`noveon-app.md`](noveon-app.md) | Product/UI roster (same git root, different WIP pool) |
 | [`AGENTS.snippet.md`](AGENTS.snippet.md) | Block to paste into a product `AGENTS.md` |
 | [`packet.md`](packet.md) | Dispatch / ACK / FINAL skeleton |
-| [`onboard-ack.md`](onboard-ack.md) | Lead roll-call + seat EMAIL ACK |
+| [`onboard-ack.md`](onboard-ack.md) | Same EMAIL for lead and seats |

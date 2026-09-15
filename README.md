@@ -56,14 +56,16 @@ Already-running occupants do **not** hot-reload. Send path+sha256 and require a 
 
 Paste [`examples/AGENTS.snippet.md`](examples/AGENTS.snippet.md) into that repo’s `AGENTS.md`. Keep your product rules. This block is only Herdr-team law: WIP=1, EMAIL `FROM`/`TO`/`SUBJECT`, Process is not a third grade.
 
-### 4. Map roles, build rooms, onboard the lead, then the team
+### 4. Team standup (design → Herdr → skills → lead → team)
 
-Full story: [`docs/onboarding.md`](docs/onboarding.md).
+Give a pane in Herdr the **`team-onboarding` skill** ([`skills/team-onboarding/SKILL.md`](skills/team-onboarding/SKILL.md)). It walks:
 
-1. Compare our roles (lead, builder, hostile, semantic, process, advice, OverSeer) to what you need. Keep **our lead** unless you have a better concept. Roster examples: [`examples/noveon-os.md`](examples/noveon-os.md) / [`examples/noveon-app.md`](examples/noveon-app.md). Layout recipe: [`docs/build-a-workspace.md`](docs/build-a-workspace.md).
-2. One pane per agent. Shell in each tab; type `grok` / `claude` / `codex`. Herdr recognizes the kind if the integration is installed. No nested vendor subagents. `herdr agent start` is only for a sibling pane Herdr just split.
-3. **Onboard the lead like any other seat:** tell that pane to read herdr + agent-behavior + conduct and EMAIL-ACK its role (the tab is already named). That is onboard.
-4. Tell the lead to **onboard the rest of the team** the same way and harvest ACKs.
+1. Design session: their needs vs our Os/App/OverSeer baselines. Keep **our lead** unless they have a better concept.
+2. Write roster + AGENTS snippet + `install-skills.sh --repo` (shared herdr/conduct; role = tab name).
+3. Configure Herdr: named workspace, named tabs, one pane per agent. **Ask the user** to start their desired agent in each pane (integrations so Herdr recognizes `grok`/`codex`).
+4. Onboard the **lead like any seat** (EMAIL ACK of role). Then tell the lead to onboard the rest.
+
+Same skill again for a **new** workspace. Human index: [`docs/onboarding.md`](docs/onboarding.md).
 
 ### 5. Learn the two workgroups (optional, but the point of the examples)
 
@@ -86,9 +88,9 @@ Tab labels are cosmetic. Prompt **pane ID** (`w1:pD`) or **live agent name**, ne
 
 Runtime `done` ≠ packet done. A receipt not delivered (path+sha256) is not done.
 
-### 7. After a swap, onboard that pane again
+### 7. Day-to-day: agent skill (pane onboard)
 
-Exit Codex, run `grok` in that shell, tell the **lead** to onboard the pane. Same role (tab + roster). Do not reset the workspace.
+Swaps and new occupants use **`agent-behavior`** ([`skills/agent-behavior/SKILL.md`](skills/agent-behavior/SKILL.md) — Pane onboard), not team-onboarding. Exit Codex, run `grok` in that shell, tell the lead to onboard **that pane**. Same EMAIL ACK. Same role.
 
 ---
 
@@ -100,13 +102,14 @@ Exit Codex, run `grok` in that shell, tell the **lead** to onboard the pane. Sam
 | [`docs/build-a-workspace.md`](docs/build-a-workspace.md) | Step 4 (agent recipe) |
 | [`docs/workspaces.md`](docs/workspaces.md) | Step 5 |
 | [`docs/operating-loop.md`](docs/operating-loop.md) | Step 6 |
-| [`docs/onboarding.md`](docs/onboarding.md) | Steps 4 + 7 — map roles, onboard lead, then team |
+| [`docs/onboarding.md`](docs/onboarding.md) | Human index for standup |
+| [`skills/team-onboarding/`](skills/team-onboarding/) | Walk: design session → rooms → skills → lead → team |
 | [`docs/herdr-skill-delta.md`](docs/herdr-skill-delta.md) | What we inserted vs upstream |
 | [`examples/`](examples/) | Rosters, AGENTS snippet, EMAIL skeleton |
 | [`skills/herdr/`](skills/herdr/) | Drive Herdr |
 | [`skills/conduct/`](skills/conduct/) | EMAIL, WIP=1, harvest |
 | [`skills/process/`](skills/process/) | Written-law closeout, not a product grade |
-| [`skills/agent-behavior/`](skills/agent-behavior/) | Generic assign → harvest → wait |
+| [`skills/agent-behavior/`](skills/agent-behavior/) | Day-to-day pane onboard + assign → harvest → wait |
 
 ## Not packed
 

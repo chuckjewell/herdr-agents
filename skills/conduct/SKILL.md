@@ -39,7 +39,7 @@ Do not add a new ask to a lane that just delivered unless the next packet is alr
 
 ## Onboard
 
-The lead is onboarded **the same way as every seat**: herdr + agent-behavior + conduct path+sha256, EMAIL ACK of **role** from the tab. Then the lead onboards the rest. After a swap (exit CLI, start another in that shell), onboard **that pane** again. Details: `docs/onboarding.md`. Template: `examples/onboard-ack.md`.
+Standup: `skills/team-onboarding/SKILL.md`. Day-to-day pane (swap, new occupant): `skills/agent-behavior/SKILL.md` Pane onboard. Template: `examples/onboard-ack.md`.
 
 ## Integration
 

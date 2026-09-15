@@ -8,7 +8,7 @@ KIT="$(cd "$(dirname "$0")/.." && pwd)"
 CANON="$KIT/skills"
 
 USER_CLIENTS=(claude grok cursor codex hermes)
-TEAM_SKILLS=(herdr conduct process agent-behavior)
+TEAM_SKILLS=(herdr conduct process agent-behavior team-onboarding)
 
 link_skill() {
   local src="$1" dest="$2"

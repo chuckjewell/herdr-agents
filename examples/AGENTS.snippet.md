@@ -14,7 +14,7 @@ PROCESS: written-law/provenance only — not a third product grade, not merge.
 ADVICE: no execution or merge authority.
 BAN: merge/restamp/denominator change outside recorded authority. unavailable, never invented 0.
 SKILL_ADOPTION: path+sha256 + full-read ACK; no session reset.
-ONBOARD: lead is onboarded like any seat (read herdr+conduct; EMAIL ACK role from tab). Then lead onboards the team. Swap: exit, new CLI in that shell, lead onboards that pane.
+ONBOARD: team-onboarding = first standup. Day-to-day pane/swap = agent-behavior Pane onboard. Ask the user to start the CLI in each new pane.
 ```
 
 Install matching skills so every client in this cwd can see them:
