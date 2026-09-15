@@ -7,3 +7,4 @@
 | [`AGENTS.snippet.md`](AGENTS.snippet.md) | Block to paste into a product `AGENTS.md` |
 | [`packet.md`](packet.md) | Dispatch / ACK / FINAL skeleton |
 | [`onboard-ack.md`](onboard-ack.md) | Same EMAIL for lead and seats |
+| [`run-team-onboarding.md`](run-team-onboarding.md) | What to paste to a strong ATC agent to start standup |

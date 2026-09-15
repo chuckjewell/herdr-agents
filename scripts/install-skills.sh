@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
-# Link this kit's skills where common agent CLIs look.
+# Team skills only. Official Herdr skill: npx skills add herdrdev/herdr --skill herdr -g
+# Do not fork herdr. Extras live in agent-behavior.
 # Usage:
-#   ./scripts/install-skills.sh              # user-global herdr (+ shared .agents)
-#   ./scripts/install-skills.sh --repo PATH  # also team skills into that checkout
+#   ./scripts/install-skills.sh              # user-global team skills via ~/.agents
+#   ./scripts/install-skills.sh --repo PATH  # also into that checkout
 set -euo pipefail
 KIT="$(cd "$(dirname "$0")/.." && pwd)"
 CANON="$KIT/skills"
-
-USER_CLIENTS=(claude grok cursor codex hermes)
-TEAM_SKILLS=(herdr conduct process agent-behavior team-onboarding)
+TEAM_SKILLS=(conduct process agent-behavior team-onboarding)
 
 link_skill() {
   local src="$1" dest="$2"
@@ -18,14 +17,13 @@ link_skill() {
 }
 
 echo "kit=$KIT"
+echo "Not installing herdr skill here. Run: npx skills add herdrdev/herdr --skill herdr -g"
+echo "Herdr extras are in $CANON/agent-behavior (keep official herdr upgradable)"
 
-echo "User-global herdr (and .agents shared):"
 mkdir -p "$HOME/.agents/skills"
-for client in "${USER_CLIENTS[@]}"; do
-  link_skill "$CANON/herdr" "$HOME/.$client/skills/herdr"
+for s in "${TEAM_SKILLS[@]}"; do
+  link_skill "$CANON/$s" "$HOME/.agents/skills/$s"
 done
-link_skill "$CANON/herdr" "$HOME/.agents/skills/herdr"
-link_skill "$CANON/agent-behavior" "$HOME/.agents/skills/agent-behavior"
 link_skill "$CANON/agent-behavior" "$HOME/.claude/skills/agent-behavior"
 
 REPO=""
@@ -41,14 +39,13 @@ if [[ -n "$REPO" ]]; then
   for s in "${TEAM_SKILLS[@]}"; do
     src="$CANON/$s"
     link_skill "$src" "$REPO/.agents/skills/$s"
-    # Same inode via .agents so vendors do not drift
     for vendor in claude cursor grok; do
       link_skill "$REPO/.agents/skills/$s" "$REPO/.$vendor/skills/$s"
     done
   done
   printf '%s\n' "$KIT" > "$REPO/.agents/herdr-agents.path"
   echo "Wrote $REPO/.agents/herdr-agents.path"
-  echo "Paste examples/AGENTS.snippet.md into $REPO/AGENTS.md and set HERDR_AGENTS_KIT: $KIT (Codex always-on)."
+  echo "Paste examples/AGENTS.snippet.md into $REPO/AGENTS.md and set HERDR_AGENTS_KIT: $KIT"
 fi
 
 echo "Done. Occupants already running do not hot-reload; send path+sha256 and require a full-read ACK."

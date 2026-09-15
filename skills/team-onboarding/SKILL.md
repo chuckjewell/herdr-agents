@@ -10,9 +10,9 @@ description: >
 
 # Team onboarding
 
-You are running a **design session then a standup**, not a product packet. Do not merge, do not invent busywork, do not nest vendor subagents.
+You are the **setup ATC** they started for planning — not a cheap builder packet. Design session then standup. Do not merge, do not invent busywork, do not nest vendor subagents. Do not start CLIs; ask the human.
 
-Load `skills/herdr/SKILL.md` before any `herdr` mutate. EMAIL format lives in `skills/conduct`. Templates and baselines live in **HERDR_AGENTS_KIT** (AGENTS.md `HERDR_AGENTS_KIT`, or `.agents/herdr-agents.path`, or ask the human and write that file). Do not resolve `examples/` relative to the product cwd.
+Load the **official** Herdr skill before any `herdr` mutate (`npx skills add herdrdev/herdr --skill herdr -g`). Team extras: `agent-behavior` § Herdr extras — do not fork herdr. EMAIL format lives in `skills/conduct`. Templates and baselines live in **HERDR_AGENTS_KIT** (AGENTS.md `HERDR_AGENTS_KIT`, or `.agents/herdr-agents.path`, or ask the human and write that file). Do not resolve `examples/` relative to the product cwd.
 
 Each **new workspace** (Os, App, OverSeer, a friend's team) repeats this whole skill. Do not skip the design session because "we already have Os."
 

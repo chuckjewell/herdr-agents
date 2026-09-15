@@ -8,6 +8,18 @@ description: Agent operating conventions, day-to-day pane onboard (swap/new occu
 AUTH: current system/developer/user instructions and project authority control scope.
 Skills supply method, not additional permission. Existing named lanes before new agents.
 
+Herdr control: load the **official** skill (`npx skills add herdrdev/herdr --skill herdr -g`). Do not fork it. Team extras below so that skill stays upgradable.
+
+## Herdr extras
+
+Official wait/stall/blocked/server rules stand. These are campaign scars:
+
+- Agent targets: pane ID or live name — **not tab titles**.
+- `done` stays `done` after a CLI harvest; a later pulse listing that pane is not a new event.
+- `herdr agent get` before treating a seat as free; do not prompt `working`.
+- Do not start a second agent in an occupied pane or name.
+- Same `herdr` on `PATH` for child tools; a missing method is not permission to restart the server (kills panes). Unavailable runtime-sync is not a live lane check.
+
 ## Local work
 
 - DOCS: no unsolicited documentation or comments/types on untouched code. Explain non-obvious changed logic only.
