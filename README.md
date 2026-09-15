@@ -10,6 +10,8 @@ Your AGENTS.md = product law in the repo the panes sit in
 
 Herdr does not store your doctrine. Occupants load `AGENTS.md` and skills from **cwd**. The **official Herdr skill** is what makes an agent good at *building the rooms*. This kit does **not** fork it. Team extras (tab titles, sticky `done`, live `get`) live in [`skills/agent-behavior/SKILL.md`](skills/agent-behavior/SKILL.md) so `npx skills add herdrdev/herdr --skill herdr -g` stays upgradable. Why: [`docs/herdr-skill-delta.md`](docs/herdr-skill-delta.md).
 
+**What the running team is doing** (EMAIL packets, dual review until green, Process, lead merge) and **where to change that process**: **[`docs/conductor-loop.md`](docs/conductor-loop.md)**. Human-readable; not a skill; do not load it into agents.
+
 ---
 
 ## Walkthrough (new Herdr user)
@@ -62,8 +64,6 @@ Prompt **pane ID** or **live agent name**, never a tab title. `idle` = ready see
 ### 4. Day-to-day: **agent-behavior** pane onboard
 
 Not team-onboarding. Exit Codex, run `grok` in that shell, tell the **lead** to onboard that pane ([`skills/agent-behavior/SKILL.md`](skills/agent-behavior/SKILL.md)). Same EMAIL ACK. Same role.
-
-What the running team is doing (dual review, Process, merge) and how to change it: [`docs/conductor-loop.md`](docs/conductor-loop.md) — human doc, not loaded into agents.
 
 ---
 
