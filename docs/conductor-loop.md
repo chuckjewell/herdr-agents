@@ -17,7 +17,7 @@ Compact cheat: [`operating-loop.md`](operating-loop.md). What agents actually lo
 
 Herdr does not know “reviewer” or “merge.” It only knows panes. The split is: **herdr moves bytes in terminals; agent-behavior is air traffic control (ATC); conduct is our review/merge policy.**
 
-## The movie
+## Sequence
 
 ```
 lead ASSIGNs EMAIL packet (one owner, one surface, receipt path)

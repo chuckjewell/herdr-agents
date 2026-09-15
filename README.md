@@ -1,16 +1,22 @@
 # Herdr agents
 
-A portable kit for running **several coding agents as a visible team** inside [Herdr](https://herdr.dev).
+Named seats in [Herdr](https://herdr.dev), EMAIL packets between them, two independent reviews, then merge.
 
+| | |
+|---|---|
+| Herdr | Workspaces, tabs, panes. Occupant lifecycle. |
+| This repo | Who sits where, and how work is handed off. |
+| Your `AGENTS.md` | Product rules. Agents load these from the pane cwd. |
+
+How that handoff works (and how to change it): [`docs/conductor-loop.md`](docs/conductor-loop.md). That's for you, not for agents.
+
+Install Herdr's own skill and leave it official:
+
+```bash
+npx skills add herdrdev/herdr --skill herdr -g
 ```
-Herdr          = rooms, panes, agent lifecycle
-This kit       = seating chart + how the team hands work
-Your AGENTS.md = product law in the repo the panes sit in
-```
 
-Herdr does not store your doctrine. Occupants load `AGENTS.md` and skills from **cwd**. The **official Herdr skill** is what makes an agent good at *building the rooms*. This kit does **not** fork it. Team extras (tab titles, sticky `done`, live `get`) live in [`skills/agent-behavior/SKILL.md`](skills/agent-behavior/SKILL.md) so `npx skills add herdrdev/herdr --skill herdr -g` stays upgradable. Why: [`docs/herdr-skill-delta.md`](docs/herdr-skill-delta.md).
-
-**What the running team is doing** (EMAIL packets, dual review until green, Process, lead merge) and **where to change that process**: **[`docs/conductor-loop.md`](docs/conductor-loop.md)**. Human-readable; not a skill; do not load it into agents.
+Our extras (tab titles aren't IDs, sticky `done`, live `agent get`) are in [`skills/agent-behavior`](skills/agent-behavior/SKILL.md). Details: [`docs/herdr-skill-delta.md`](docs/herdr-skill-delta.md).
 
 ---
 
@@ -38,7 +44,7 @@ npx skills add herdrdev/herdr --skill herdr -g
 That is Herdr’s own installer; it places the skill where Claude, Codex, Cursor, Grok, etc. look. Leave it official. Our extras are in **agent-behavior**, loaded at onboard.
 
 ```bash
-git clone <this-repo> ~/code/herdr-agents
+git clone https://github.com/chuckjewell/herdr-agents.git ~/code/herdr-agents
 cd ~/code/herdr-agents
 chmod +x scripts/install-skills.sh
 ./scripts/install-skills.sh                 # ~/.agents/skills so the standup pane can find team-onboarding
@@ -49,7 +55,7 @@ chmod +x scripts/install-skills.sh
 
 ### 3. Run team-onboarding with a strong agent
 
-Standup is **planning / air traffic control (ATC)**. Use a high-quality model (the class you want for lead), not a cheap builder.
+Standup is planning / air traffic control (ATC). Use the same class of model you want for the lead.
 
 1. In Herdr, start that agent in a pane.
 2. Paste the prompt in [`examples/run-team-onboarding.md`](examples/run-team-onboarding.md) (point it at this kit’s `skills/team-onboarding/SKILL.md`).
@@ -95,4 +101,4 @@ Lane Watch is optional (`tools/lane_watch.py` in our extract checkout). Start wi
 
 ## Origin
 
-Live extract/engine campaign. Official herdr skill via `npx skills add herdrdev/herdr --skill herdr -g`. Do not fork it.
+Extracted from how we run engine work in Herdr. Official skill: `npx skills add herdrdev/herdr --skill herdr -g`.

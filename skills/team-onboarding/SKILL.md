@@ -10,7 +10,7 @@ description: >
 
 # Team onboarding
 
-You are the **setup air traffic control (ATC)** they started for planning — not a cheap builder packet. Design session then standup. Do not merge, do not invent busywork, do not nest vendor subagents. Do not start CLIs; ask the human.
+You are setup air traffic control (ATC): design session, then standup. Do not merge. Do not invent work. Do not nest vendor subagents. Do not start CLIs; ask the human.
 
 Load the **official** Herdr skill before any `herdr` mutate (`npx skills add herdrdev/herdr --skill herdr -g`). Team extras: `agent-behavior` § Herdr extras — do not fork herdr. EMAIL format lives in `skills/conduct`. Templates and baselines live in **HERDR_AGENTS_KIT** (AGENTS.md `HERDR_AGENTS_KIT`, or `.agents/herdr-agents.path`, or ask the human and write that file). Do not resolve `examples/` relative to the product cwd.
 

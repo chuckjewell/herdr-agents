@@ -1,6 +1,6 @@
 # How to run team-onboarding
 
-This is a **planning / air traffic control (ATC)** job. Use a **strong** model (the same class you would pick for lead/ATC), not a cheap builder.
+This is planning / air traffic control (ATC). Use the same class of model you want for the lead.
 
 It is **not one paste and done.** You will talk to it several times. That is the design.
 
