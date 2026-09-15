@@ -37,7 +37,7 @@ Write down, in the product repo (markdown roster, not only chat):
 - Job / authority / ban per seat
 - Suggested CLI kind (grok, claude, codex, …) — role is the tab, not the vendor
 
-Get a human yes on that roster before touching Herdr.
+Expect **back and forth** on team makeup: seats, kinds, which baselines to steal from, what to drop. Iterate the roster in markdown until they say yes. Do not touch Herdr until that yes. Do not treat the first draft as final.
 
 ## 2. Write skills for this team
 
