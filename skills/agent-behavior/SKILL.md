@@ -9,7 +9,7 @@ Three jobs in this file — do not mix them:
 
 - **Herdr extras** — scars on top of the official herdr skill (always on).
 - **Pane onboard** — day-to-day: new occupant or swap in an existing seat. Not first-time team standup (`team-onboarding`).
-- **Conductor loop** — **normal** lead behavior after the team exists: assign, harvest, wait, merge. Not an onboarding walk.
+- **Conductor loop** — **normal** lead behavior after the team exists: assign, harvest, wait, merge. Not an onboarding walk. Split: official herdr = multiplexer; this file = ATC; `conduct` = EMAIL/dual/Process. Humans: `docs/conductor-loop.md` (not a skill).
 
 AUTH: current system/developer/user instructions and project authority control scope.
 Skills supply method, not additional permission. Existing named lanes before new agents.

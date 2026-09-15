@@ -63,6 +63,8 @@ Prompt **pane ID** or **live agent name**, never a tab title. `idle` = ready see
 
 Not team-onboarding. Exit Codex, run `grok` in that shell, tell the **lead** to onboard that pane ([`skills/agent-behavior/SKILL.md`](skills/agent-behavior/SKILL.md)). Same EMAIL ACK. Same role.
 
+What the running team is doing (dual review, Process, merge) and how to change it: [`docs/conductor-loop.md`](docs/conductor-loop.md) — human doc, not loaded into agents.
+
 ---
 
 ## Repo map
@@ -73,7 +75,8 @@ Not team-onboarding. Exit Codex, run `grok` in that shell, tell the **lead** to 
 | [`examples/run-team-onboarding.md`](examples/run-team-onboarding.md) | Paste to a strong ATC agent |
 | [`docs/build-a-workspace.md`](docs/build-a-workspace.md) | Layout recipe used by team-onboarding |
 | [`docs/workspaces.md`](docs/workspaces.md) | Os / App / OverSeer baselines |
-| [`docs/operating-loop.md`](docs/operating-loop.md) | Packets after standup |
+| [`docs/operating-loop.md`](docs/operating-loop.md) | Compact packet/harvest cheat |
+| [`docs/conductor-loop.md`](docs/conductor-loop.md) | Human: what the loop does, where to change it (not a skill) |
 | [`docs/onboarding.md`](docs/onboarding.md) | Human index |
 | [`skills/team-onboarding/`](skills/team-onboarding/) | First standup walk |
 | [`docs/herdr-skill-delta.md`](docs/herdr-skill-delta.md) | Why extras live in agent-behavior |
