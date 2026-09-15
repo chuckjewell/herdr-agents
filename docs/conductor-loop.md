@@ -6,7 +6,7 @@ This is **our** process after a team exists. Change it to match **yours**. Keep 
 
 Compact cheat: [`operating-loop.md`](operating-loop.md). What agents actually load: official herdr skill, `agent-behavior`, `conduct`, `process`.
 
-## Where the loop is split
+## Which file does what
 
 | File | Job |
 |---|---|
@@ -17,7 +17,7 @@ Compact cheat: [`operating-loop.md`](operating-loop.md). What agents actually lo
 
 Herdr does not know “reviewer” or “merge.” It only knows panes. The split is: **herdr moves bytes in terminals; agent-behavior is air traffic control (ATC); conduct is our review/merge policy.**
 
-## Sequence
+## From packet to merge
 
 ```
 lead ASSIGNs EMAIL packet (one owner, one surface, receipt path)
@@ -42,7 +42,7 @@ builder may take orthogonal work; lead ASSIGNs next lawful packet
 
 That cycle **until reviews are green** is the point. A builder “LGTM” is not dual review. Lead-authored code still goes through the two independent seats.
 
-## How agents stay busy (without chaos)
+## Keeping lanes busy without stepping on each other
 
 - **WIP=1** on a lane and on an overlapping path. No second EMAIL to `working`.
 - **Orthogonal** work is allowed after the candidate is released (reviews own the PR; builder can take another packet).
@@ -61,7 +61,7 @@ That cycle **until reviews are green** is the point. A builder “LGTM” is not
 
 If you do not want two reviewers, or you want CI instead of Process, **change `conduct` and the AGENTS snippet**. Do not fork the official herdr skill to encode your merge policy.
 
-## Customize
+## What to keep vs what to change
 
 | Keep | Change if you want |
 |---|---|
