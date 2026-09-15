@@ -5,6 +5,12 @@ description: Agent operating conventions, day-to-day pane onboard (swap/new occu
 
 # Agent operations
 
+Three jobs in this file — do not mix them:
+
+- **Herdr extras** — scars on top of the official herdr skill (always on).
+- **Pane onboard** — day-to-day: new occupant or swap in an existing seat. Not first-time team standup (`team-onboarding`).
+- **Conductor loop** — **normal** lead behavior after the team exists: assign, harvest, wait, merge. Not an onboarding walk.
+
 AUTH: current system/developer/user instructions and project authority control scope.
 Skills supply method, not additional permission. Existing named lanes before new agents.
 
@@ -35,7 +41,7 @@ EMAIL that pane (`$HERDR_AGENTS_KIT/examples/onboard-ack.md`): **official herdr*
 
 Swap: user exits the old CLI, starts the new one in that shell, asks the **lead** to onboard that pane. Same role. No team reset.
 
-## Conductor loop
+## Conductor loop (day-to-day lead, not onboard)
 
 TRIGGER=authorized asynchronous team work. Dispatch is not completion.
 
