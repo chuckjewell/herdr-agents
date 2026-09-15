@@ -37,6 +37,10 @@ Before send: owner, paths, exact pins, mutation scope, acceptance, budget, recei
 
 Do not add a new ask to a lane that just delivered unless the next packet is already queued and orthogonal.
 
+## Onboard
+
+After layout exists (or after a **kind swap** in the same pane), the lead onboards each seat: herdr + agent-behavior + conduct path+sha256, EMAIL ACK of **role** (tab/roster, not vendor). Harvest ACKs before product packets. Quota/crash: start a new kind in that pane, then onboard that pane again — same role. Details: `docs/onboarding.md`. Template: `examples/onboard-ack.md`.
+
 ## Integration
 
 Lead owns the merge lease: one PR, pinned base/head, bounded TTL. Workers do not self-merge, restamp, or widen the contract. Guarded squash uses `--match-head-commit` at the reviewed tip when the host supports it.

@@ -81,6 +81,12 @@ Tab labels are cosmetic. Prompt **pane ID** (`w1:pD`) or **live agent name**, ne
 
 Runtime `done` ≠ packet done. A receipt not delivered (path+sha256) is not done.
 
+### 7. Onboard every seat (and again after a swap)
+
+The lead sends herdr + conduct to each pane and harvests an **EMAIL role ACK** ([`docs/onboarding.md`](docs/onboarding.md)). Role is tab + roster, not “I am Codex.”
+
+You can **change the agent in a pane** (Codex hits a token limit → start Grok in the same pane). Ask the lead to onboard that pane. The new occupant reads the skills and ACKs the same role. Do not reset the rest of the workspace.
+
 ---
 
 ## Repo map
@@ -91,6 +97,7 @@ Runtime `done` ≠ packet done. A receipt not delivered (path+sha256) is not don
 | [`docs/build-a-workspace.md`](docs/build-a-workspace.md) | Step 4 (agent recipe) |
 | [`docs/workspaces.md`](docs/workspaces.md) | Step 5 |
 | [`docs/operating-loop.md`](docs/operating-loop.md) | Step 6 |
+| [`docs/onboarding.md`](docs/onboarding.md) | Step 7 — roll-call + pane swap |
 | [`docs/herdr-skill-delta.md`](docs/herdr-skill-delta.md) | What we inserted vs upstream |
 | [`examples/`](examples/) | Rosters, AGENTS snippet, EMAIL skeleton |
 | [`skills/herdr/`](skills/herdr/) | Drive Herdr |
