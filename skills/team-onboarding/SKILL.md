@@ -16,6 +16,8 @@ Load the **official** Herdr skill before any `herdr` mutate (`npx skills add her
 
 Each **new workspace** (Os, App, OverSeer, a friend's team) repeats this whole skill. Do not skip the design session because "we already have Os."
 
+This walk is **multi-turn**. After each human gate, stop and wait. When they say continue (or start a CLI / confirm a roster), resume the **last unfinished step**. Do not restart from step 1 unless they say the roster changed.
+
 ## 1. Design session (needs vs baselines)
 
 Talk to the human. Baselines under `$HERDR_AGENTS_KIT` (examples, not a clone mandate):

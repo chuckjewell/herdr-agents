@@ -53,9 +53,9 @@ Standup is **planning / air traffic control (ATC)**. Use a high-quality model (t
 
 1. In Herdr, start that agent in a pane.
 2. Paste the prompt in [`examples/run-team-onboarding.md`](examples/run-team-onboarding.md) (point it at this kit’s `skills/team-onboarding/SKILL.md`).
-3. Answer the design session (your needs vs Os/App/OverSeer baselines). Keep **our lead** unless you have a better concept.
-4. When asked, **you** start the lead CLI in the lead tab, then the other CLIs. The agent does not start them for you.
-5. It onboards the **lead** with official **herdr** + **agent-behavior** (EMAIL role ACK). Then it tells the lead to onboard every other pane with those **same two skills**.
+3. Answer the design session. Keep **our lead** unless you have a better concept. This is **several turns**, not one paste.
+4. When asked, start the **lead** CLI, then tell it the pane is live. Then start the other CLIs when asked.
+5. It onboards the **lead** with official **herdr** + **agent-behavior**. Then it tells the lead to onboard every other pane with those **same two skills**. If it goes idle mid-walk, paste the continue line from that example file.
 
 Exact walk: [`skills/team-onboarding/SKILL.md`](skills/team-onboarding/SKILL.md). Human index: [`docs/onboarding.md`](docs/onboarding.md). Repeat for each new workspace.
 
