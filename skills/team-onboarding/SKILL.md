@@ -20,24 +20,31 @@ This walk is **multi-turn**. After each human gate, stop and wait. When they say
 
 ## 1. Design session (needs vs baselines)
 
-Talk to the human. Baselines under `$HERDR_AGENTS_KIT` (examples, not a clone mandate):
+**Ask first:** what kind of project is this? (web app, API, engine/correctness, mobile, research, mixed, …)
 
-- `docs/workspaces.md` — workgroups, OverSeer as only cross-workspace talker
-- `examples/noveon-os.md` — engine/correctness factory
-- `examples/noveon-app.md` — product/UI, separate WIP/merge owner
+Then **propose a starter team** so they have something to argue with. Do not wait for them to invent seats from a blank page.
 
-Catalog to map **from**: lead, builder, hostile/repro, semantic/source, process, advice, OverSeer.
+Keep **our lead** (sequence, packets, lease, guarded merge; cannot self-grade as independent) unless they have a better concept.
 
-Keep **our lead** (sequence, packets, lease, guarded merge; cannot self-grade as independent) unless they have a better concept. Drop seats they do not need. Do not copy a 12-tab Os for a three-seat job.
+Starter shapes (edit hard):
 
-Write down, in the product repo (markdown roster, not only chat):
+| Project | Propose |
+|---|---|
+| Default / unknown | Lead, Builder, Review (hostile or semantic), Process |
+| Web / UI | that set **plus** a UI/browser tester (click, forms, viewports — e.g. a `dev-browser` skill on that seat) |
+| Engine / high-stakes correctness | Os-like: Lead, Builder(s), Hostile, Semantic/source, Process; Advice optional |
+| Product app + backend | App-like: Lead, UI, Fullstack, Review, Process |
+| Tiny / solo+one bot | Lead + Builder only; Process can be the human |
 
-- Workspace label and cwd
-- Tab name = seat name
-- Job / authority / ban per seat
-- Suggested CLI kind (grok, claude, codex, …) — role is the tab, not the vendor
+Baselines to steal from (not a clone mandate): `$HERDR_AGENTS_KIT/docs/workspaces.md`, `examples/noveon-os.md`, `examples/noveon-app.md`. Catalog: lead, builder, hostile/repro, semantic/source, process, advice, OverSeer.
 
-Expect **back and forth** on team makeup: seats, kinds, which baselines to steal from, what to drop. Iterate the roster in markdown until they say yes. Do not touch Herdr until that yes. Do not treat the first draft as final.
+**Use-case extra seat:** if a kit skill or a product skill would make the team better (web → UI tester; data → spreadsheet seat; docs → writer), **name it** and say why. That is an extra tab + optional repo skill on that occupant — not a unique fork of herdr/conduct.
+
+Write the roster in the product repo (markdown, not only chat): workspace label, cwd, tab = seat, job / authority / ban, suggested CLI kind (role is the tab, not the vendor).
+
+Expect **back and forth** until they are **comfortable**: seats, kinds, extras, what to drop. Iterate the file. First draft is not final. Do not copy a 12-tab Os for a three-seat job.
+
+**Do not create anything in Herdr** until they explicitly say the team is **ready to build** (go-ahead). “Looks ok” / a shrug is not go-ahead. After go-ahead, step 2 then 3.
 
 ## 2. Write skills for this team
 
@@ -51,6 +58,8 @@ In the product checkout (cwd the panes will use):
 Do not write a unique SKILL.md per tab. Seats share herdr + conduct; role comes from the **tab name + roster**.
 
 ## 3. Configure Herdr from the roster
+
+Only after explicit **ready to build**.
 
 Integrations first (`herdr integration status` / `herdr integration install …`, or Herdr setup menu). Then `$HERDR_AGENTS_KIT/docs/build-a-workspace.md`:
 

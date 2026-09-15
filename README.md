@@ -53,7 +53,7 @@ Standup is **planning / air traffic control (ATC)**. Use a high-quality model (t
 
 1. In Herdr, start that agent in a pane.
 2. Paste the prompt in [`examples/run-team-onboarding.md`](examples/run-team-onboarding.md) (point it at this kit’s `skills/team-onboarding/SKILL.md`).
-3. Work the **team makeup** with it (several turns is normal). Keep **our lead** unless you have a better concept. Say yes on the roster before it builds Herdr.
+3. Work the **team makeup** with it (several turns is normal). It should propose a starter roster and maybe an extra seat for your project type. Keep **our lead** unless you have a better concept. Say the team is **ready to build** before it creates Herdr tabs.
 4. When asked, start the **lead** CLI, then tell it the pane is live. Then start the other CLIs when asked.
 5. It onboards the **lead** with official **herdr** + **agent-behavior**. Then it tells the lead to onboard every other pane with those **same two skills**. If it goes idle mid-walk, paste the continue line from that example file.
 
