@@ -12,6 +12,10 @@ Your AGENTS.md = product law for the repo the panes sit in
 
 Herdr does not store Chuck/Astra/Process doctrine. Occupants load whatever `AGENTS.md` and skills exist in the pane's **cwd**. Put team law in the repo; put rooms in Herdr.
 
+**The Herdr skill is what makes an agent good at building the rooms.** Give a pane `skills/herdr/SKILL.md` plus a roster (who sits where) and it will create workspaces, named tabs, and started agents the way we do here. This kit's extra docs are *which seats* and *how they hand work*, not a substitute for that skill.
+
+Our `skills/herdr/SKILL.md` is a **compressed rewrite** of the official skill at [herdr `v0.9.0`](https://github.com/herdrdev/herdr/blob/v0.9.0/skills/herdr/SKILL.md) (upstream ~12.6K; ours 4614 bytes, hash `b9f7012f…`). Same rules, denser, plus wait-vs-packet, blocked-dialog authorization, and PATH/runtime-sync for child tools. For verbose worked examples, read upstream; for day-to-day occupant load, use the copy in this repo. Not a byte-identical vendor file.
+
 ## Why this exists
 
 One chat with one bot is a pair programmer. A campaign with builders, independent reviewers, and a lead who merges is a **team**. Teams fail in predictable ways:
@@ -83,7 +87,7 @@ A receipt not delivered (path + sha256 to the requester) is **not done**. Runtim
 2. Clone this kit. Symlink `skills/herdr` as above.
 3. Paste [`examples/AGENTS.snippet.md`](examples/AGENTS.snippet.md) into the product repo's `AGENTS.md`.
 4. Copy `skills/conduct` and `skills/process` into that repo's `.claude/skills/` (and `.cursor/skills/` if you use Cursor).
-5. Hand [`docs/build-a-workspace.md`](docs/build-a-workspace.md) to an agent **that is already inside Herdr** (`HERDR_ENV=1`) and ask it to build the roster in [`examples/noveon-os.md`](examples/noveon-os.md) or your own.
+5. In a pane that already has the Herdr skill, ask it to **build the roster** (Os, App, or your own). Point at [`docs/build-a-workspace.md`](docs/build-a-workspace.md) + [`examples/noveon-os.md`](examples/noveon-os.md). That skill is the setup muscle; the example is only the seating chart.
 
 ## Quick start (agent already in Herdr)
 
@@ -100,4 +104,4 @@ Lane Watch (`tools/lane_watch.py` in our extract checkout) is an **optional ledg
 
 ## License / origin
 
-Method distilled from a live multi-agent extract/engine campaign. Skills `herdr` and `agent-behavior` are copied from the canonical home copies (`~/.claude/skills/herdr`, `~/.agents/skills/agent-behavior`) so this repo is the shareable source going forward.
+Method distilled from a live multi-agent extract/engine campaign. `skills/herdr` is our compressed occupant skill (see origin note above). `skills/agent-behavior` matches `~/.agents/skills/agent-behavior`. This repo is the shareable source going forward.
