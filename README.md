@@ -14,7 +14,7 @@ Herdr does not store Chuck/Astra/Process doctrine. Occupants load whatever `AGEN
 
 **The Herdr skill is what makes an agent good at building the rooms.** Give a pane `skills/herdr/SKILL.md` plus a roster (who sits where) and it will create workspaces, named tabs, and started agents the way we do here. This kit's extra docs are *which seats* and *how they hand work*, not a substitute for that skill.
 
-Our `skills/herdr/SKILL.md` is [herdr `v0.9.0`](https://github.com/herdrdev/herdr/blob/v0.9.0/skills/herdr/SKILL.md) **plus** campaign extras (blocked-dialog authorization, receipt transport, PATH/runtime-sync, sticky `done` ≠ packet done, no skill hot-reload via reset). Setup examples from upstream are kept so an agent can still stand up rooms well. Not a byte-identical vendor file.
+Our `skills/herdr/SKILL.md` is [herdr `v0.9.0`](https://github.com/herdrdev/herdr/blob/v0.9.0/skills/herdr/SKILL.md) plus extras added as they bit us. Setup examples from upstream stay so an agent can still stand up rooms. What we added and why: [`docs/herdr-skill-delta.md`](docs/herdr-skill-delta.md). Not a byte-identical vendor file.
 
 ## Why this exists
 
@@ -34,6 +34,7 @@ We treat those as operating bugs. The fix is **rooms + roles + packets + receipt
 |---|---|
 | [`docs/workspaces.md`](docs/workspaces.md) | Use cases: **Noveon Os** vs **Noveon App** (and OverSeer). How to invent your own. |
 | [`docs/build-a-workspace.md`](docs/build-a-workspace.md) | Agent-executable recipe: create workspace, tabs, start agents. |
+| [`docs/herdr-skill-delta.md`](docs/herdr-skill-delta.md) | What we changed vs upstream v0.9.0 and why (scars, not philosophy). |
 | [`docs/operating-loop.md`](docs/operating-loop.md) | Packets, harvest, dual review, Process, no-reset skill refresh. |
 | [`examples/`](examples/) | Concrete rosters and a packet skeleton. |
 | [`examples/AGENTS.snippet.md`](examples/AGENTS.snippet.md) | The **one block** to add to a product `AGENTS.md`. |
