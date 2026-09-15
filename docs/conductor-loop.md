@@ -48,7 +48,7 @@ That cycle **until reviews are green** is the point. A builder “LGTM” is not
 - **Orthogonal** work is allowed after the candidate is released (reviews own the PR; builder can take another packet).
 - **Independent** packets run in parallel (different paths).
 - **Idle is not a bug.** If nothing lawful remains, the lead reports blockers. Do not invent tasks to fill the status bar.
-- OverSeer (optional) pulses leads across workspaces. A pulse is not invent-work authority.
+- OverSeer (optional): Hermes **agent cron** pulses leads across workspaces. Ask Hermes to create the cron. A pulse is not invent-work authority. See [`workspaces.md`](workspaces.md).
 - Nested vendor subagents are banned: Herdr cannot see them, so the parent looks idle and new work **queues on unfinished work**.
 
 ## Multiple reviews, then Process, then merge

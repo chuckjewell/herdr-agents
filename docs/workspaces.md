@@ -50,7 +50,27 @@ If your app and engine are actually different repos, give them different `--cwd`
 
 Os and App leads do **not** EMAIL each other. The only seat allowed to communicate **across workspaces** is OverSeer.
 
-We run it as **Hermes** because Hermes can schedule agent crons: poll other lanes/leads, nudge a stuck roll-call, remind Os to harvest. It does not own PRs, does not dual-review, does not merge. A pulse is a reminder, not a license to invent work when the board is quiet.
+We run it as **Hermes**. A **pulse** is a **Hermes agent cron** in that pane — not a Herdr CLI feature. You create one by asking Hermes to schedule it (interval, which workspaces, what to do). Hermes then wakes, looks, maybe EMAILS a lead, and goes back to sleep.
+
+It does not own PRs, does not dual-review, does not merge. A pulse is not a license to invent work when the board is quiet.
+
+**Ask Hermes to create a cron that, on each fire:**
+
+1. `herdr agent get` / `herdr pane list` for the watched workspaces (Os, App, …).
+2. Classify each occupant: `working`, `idle`, `done` (sticky/unseen), `blocked`, missing.
+
+Then:
+
+| Seen | Do |
+|---|---|
+| `working` | Leave it. Do not prompt. If wall-clock looks stuck vs the packet budget, EMAIL **that workspace's lead** (not the worker). |
+| `idle`, no open packet | Nothing. Idle is allowed. |
+| `idle` / `done`, receipt sitting unharvested | EMAIL the **lead**: harvest this pane (path if known). Sticky `done` alone is not a new event. |
+| `blocked` | EMAIL the lead or human: inspect the dialog; do not answer it. |
+| Roll-call incomplete | EMAIL the lead: finish onboard ACKs. |
+| Quiet (`quiet=true` / no due packets) | Stop. Do not invent tasks. |
+
+Cross-workspace EMAIL goes **to the lead of that workspace**, not builder-to-builder across Os/App.
 
 If you skip OverSeer, each lead keeps their own bounded wait. You lose a single watchdog that can see Os *and* App.
 
