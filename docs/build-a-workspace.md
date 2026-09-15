@@ -48,17 +48,19 @@ herdr tab create --workspace <workspace_id> --cwd /path/to/repo --label "Builder
 
 Same cwd unless a seat truly needs another tree (`app/`, a worktree, another repo).
 
-Optional: split inside a tab only for a helper terminal next to the agent.
+Default: **one tab, one pane, one agent.** Do not nest vendor subagents (Codex/Claude/Grok “spawn a child”). Herdr only sees the pane occupant; nested work is invisible, so the parent can look `idle`/`done` and get a new prompt queued on top of work that is still running.
+
+Optional: split a **helper terminal** (logs, tests) next to the agent — not a second hidden agent.
 
 ```bash
 herdr pane split --pane <pane_id> --direction right --cwd "$PWD" --no-focus
 ```
 
+`herdr agent start` is for that case: Herdr (or a lead agent) just created an empty sibling pane and needs to launch a CLI into it. It never creates layout. Day-to-day: type `grok` / `claude` / `codex` in the seat’s own shell.
+
 ## 3. Start agents
 
-The pane must be an **interactive shell**. In that terminal, run the agent CLI (`grok`, `claude`, `codex`, `cursor`, …). If `herdr integration status` shows that kind installed, Herdr recognizes it. You do not need `herdr agent start` for this.
-
-`herdr agent start` exists for scripted starts; it still requires an empty shell pane and never creates layout. Prefer the human path: type the CLI in the pane.
+The pane must be an **interactive shell**. In that terminal, run the agent CLI (`grok`, `claude`, `codex`, `cursor`, …). If `herdr integration status` shows that kind installed, Herdr recognizes it.
 
 Optional: `herdr agent` name the occupant after it is live (`[a-z][a-z0-9_-]{0,31}`). Use the **role**, not the vendor (`tools`, not `cursor2`).
 

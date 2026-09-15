@@ -11,7 +11,7 @@ Portable team loop for Herdr (or any visible multi-agent layout). Product-specif
 
 ## Invariants
 
-- One WIP per lane; one writer per overlapping surface.
+- One WIP per lane; one writer per overlapping surface. One pane per agent. No vendor nested subagents — Herdr cannot see their status; the parent looks ready and new EMAIL can queue on unfinished work.
 - One finalizer (lead) at a time for the default branch.
 - Dual independent review (semantic/source **and** hostile/repro) plus written Process before merge.
 - Runtime `done` is not a receipt. Close a packet only on durable path + sha256 delivered to the requester. `TO:` headers are not delivery.

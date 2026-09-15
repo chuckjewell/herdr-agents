@@ -8,7 +8,7 @@ Skills to load (path+sha256 in the packet; full-read ACK):
 - `skills/agent-behavior/SKILL.md` — assign / harvest / wait
 - `skills/conduct/SKILL.md` — EMAIL, WIP=1 (and `process` if that seat is Process)
 
-Role comes from **tab label + roster + AGENTS.md**, not from which vendor is running. `Tools` stays Tools if Codex dies and Grok sits down.
+Role comes from **tab label + roster + AGENTS.md**, not from which vendor is running. `Tools` stays Tools if Codex dies and Grok sits down. One pane per agent; no nested vendor subagents (Herdr cannot track them).
 
 ## Lead packet (one per seat, or one roll-call)
 

@@ -63,7 +63,7 @@ Confirm `HERDR_ENV=1` in that pane. That occupant needs the Herdr skill (step 2)
 - Recipe: [`docs/build-a-workspace.md`](docs/build-a-workspace.md)
 - Example seats: [`examples/noveon-os.md`](examples/noveon-os.md) (engine factory) or [`examples/noveon-app.md`](examples/noveon-app.md) (product/UI)
 
-`--no-focus` on creates. Leave each new tab at a shell prompt and launch the agent CLI there (`grok`, `claude`, …). Herdr picks up the kind if that integration is installed.
+`--no-focus` on creates. **One pane per agent.** Leave each new tab at a shell prompt and launch the agent CLI there (`grok`, `claude`, …). Herdr picks up the kind if that integration is installed. Do not use vendor nested subagents — Herdr cannot see their progress, and the parent can look idle while work is still running (new prompts then queue). `herdr agent start` is only for a sibling pane Herdr just split.
 
 ### 5. Learn the two workgroups (optional, but the point of the examples)
 
