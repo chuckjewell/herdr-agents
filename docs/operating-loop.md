@@ -8,7 +8,7 @@ Official herdr skill = multiplexer. `agent-behavior` = air traffic control (ATC)
 
 ## Roles
 
-Copy the **jobs**, not our nicknames (Sage, Astra, DarkHorse).
+Copy the **jobs**, not any one campaign’s nicknames.
 
 | Role | May | Must not |
 |---|---|---|

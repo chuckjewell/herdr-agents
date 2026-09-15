@@ -103,7 +103,7 @@ Not team-onboarding. Exit the old CLI. Start the new one in that shell. Tell the
 | [`scripts/install-skills.sh`](scripts/install-skills.sh) | Team skills only (not official Herdr) |
 | [`examples/run-team-onboarding.md`](examples/run-team-onboarding.md) | Paste this to a strong ATC agent |
 | [`docs/build-a-workspace.md`](docs/build-a-workspace.md) | Layout commands (used by team-onboarding) |
-| [`docs/workspaces.md`](docs/workspaces.md) | Example workgroups: Os, App, OverSeer |
+| [`docs/workspaces.md`](docs/workspaces.md) | Example workgroups: Engine, Product, OverSeer |
 | [`docs/operating-loop.md`](docs/operating-loop.md) | Short packet and harvest notes |
 | [`docs/conductor-loop.md`](docs/conductor-loop.md) | How the loop works and where to change it |
 | [`docs/onboarding.md`](docs/onboarding.md) | Short standup index |
@@ -117,10 +117,10 @@ Not team-onboarding. Exit the old CLI. Start the new one in that shell. Tell the
 ## What this repo does not include
 
 - Your live Herdr layout (`~/.config/herdr/session.json`)
-- Our extract-engine product rules
+- Product-specific engine rules from any one company
 - Campaign artifacts and Lane Watch databases
 
-Lane Watch (`tools/lane_watch.py` in our extract checkout) is optional. A markdown list of packets is enough to start.
+Lane Watch is optional. A markdown list of packets is enough to start.
 
 ## Where this came from
 

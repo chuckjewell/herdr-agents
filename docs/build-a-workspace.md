@@ -21,7 +21,7 @@ Parse opaque IDs from JSON. Do not invent `w1:p4`.
 One workgroup = one workspace, usually one `--cwd` (the product git root).
 
 ```bash
-herdr workspace create --cwd /path/to/repo --label "Noveon Os" --no-focus
+herdr workspace create --cwd /path/to/repo --label "Engine" --no-focus
 ```
 
 Read `.result` for `workspace_id` (example `w2`). The create already has a first tab + pane at a shell prompt.
@@ -29,7 +29,7 @@ Read `.result` for `workspace_id` (example `w2`). The create already has a first
 Rename the first tab immediately so it is a seat, not "Tab 1":
 
 ```bash
-herdr tab rename <tab_id> "Astra"
+herdr tab rename <tab_id> "Lead"
 ```
 
 List tabs: `herdr tab list --workspace <workspace_id>`.
@@ -67,9 +67,9 @@ Optional: `herdr agent` name the occupant after it is live (`[a-z][a-z0-9_-]{0,3
 After start, send **one** bounded hello that is the actual job or a "idle until packet" hold — not a dump of this whole kit.
 
 ```bash
-herdr agent prompt astra 'FROM: human
-TO: astra
-SUBJECT: You are lead for workspace Os. Read AGENTS.md and .claude/skills/conduct/SKILL.md. ACK role. Do not merge unasked.'
+herdr agent prompt lead 'FROM: human
+TO: lead
+SUBJECT: You are lead for workspace Engine. Read AGENTS.md and .claude/skills/conduct/SKILL.md. ACK role. Do not merge unasked.'
 ```
 
 `--wait` only when you will harvest this turn. Wait tracks **lifecycle**, not your packet. Already-working may satisfy wait without having done the work.
@@ -84,7 +84,7 @@ herdr agent list
 herdr pane list --workspace "$HERDR_WORKSPACE_ID"
 ```
 
-Keep a **markdown roster** in the product repo (copy [`examples/noveon-os.md`](../examples/noveon-os.md)) so humans and agents agree on seats. Tab labels can be renamed; pane IDs cannot be predicted after a move.
+Keep a **markdown roster** in the product repo (copy [`examples/engine-roster.md`](../examples/engine-roster.md)) so humans and agents agree on seats. Tab labels can be renamed; pane IDs cannot be predicted after a move.
 
 ## 6. Hygiene
 

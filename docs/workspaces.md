@@ -2,51 +2,51 @@
 
 This page is for humans who are choosing seats. A Herdr **workspace** is a workgroup: named seats that share a working directory (usually one git checkout) and a job. It is not a git worktree.
 
-We run several workspaces against the **same** extract checkout. They differ by who may touch what, and what “done” means.
+We run several workspaces against the **same** git checkout. They differ by who may touch what, and what “done” means.
 
-## Noveon Os (`w1`) — engine
+## Engine workspace
 
 **Job:** Move the extraction engine. Dual independent review before merge.
 
-Typical seats ([`examples/noveon-os.md`](../examples/noveon-os.md)):
+Typical seats ([`examples/engine-roster.md`](../examples/engine-roster.md)):
 
 | Seat | Job |
 |---|---|
-| Lead (Astra) | Sequence, packets, lease, merge |
-| Builders (DarkHorse 1–3) | One overlapping surface each, bounded PR |
+| Lead | Sequence, packets, lease, merge |
+| Builders | One overlapping surface each, bounded PR |
 | Tools | Hostile / repro / tests |
 | Investigate | Seals, scouts |
 | Eyes | Discovery (scarce) |
 | Independent grader | Semantic/source review |
-| Sage | Advice only — no merge |
+| Advice | Advice only — no merge |
 | Mr Process | Written law, not a third product grade |
-| Coolify / Hermes | Specialized standby |
+| Standby / Hermes | Specialized standby |
 
 **Done** means: both independent reviews ACCEPT + Process GREEN + lead squash on the exact head. Not “the builder said it looks good.”
 
 Keep engine work in its own workspace so app work does not interrupt it.
 
-## Noveon App (`w6`) — product UI
+## Product workspace
 
 **Job:** Customer-facing app, vault, and UI. Same git root for us, different merge owner.
 
-Typical seats ([`examples/noveon-app.md`](../examples/noveon-app.md)):
+Typical seats ([`examples/product-roster.md`](../examples/product-roster.md)):
 
 | Seat | Job |
 |---|---|
-| Conductor | App-side lead |
+| Lead | Product-side lead |
 | UI Builder | Presentation |
 | Fullstack + Vault | Product API / persistence |
 | Investigator / Tools | Repro |
 | Independent Grader | App correctness |
-| Mr. Process | Written law (may be a different occupant than Os) |
-| Muse | Design; cwd may be `app/` |
+| Process | Written law (may be a different occupant than Engine) |
+| Design | Design; cwd may be `app/` |
 
-Keep App separate so a UI packet does not wait behind an engine freeze, and an engine freeze does not block a vault fix. If app and engine are different repos, use different `--cwd` values.
+Keep Product separate so a UI packet does not wait behind an engine freeze, and an engine freeze does not block a vault fix. If app and engine are different repos, use different `--cwd` values.
 
-## OverSeer (`w7`) — only cross-workspace talker
+## OverSeer — only cross-workspace talker
 
-Os and App leads do not EMAIL each other. Only OverSeer may message **across** workspaces.
+Engine and Product leads do not EMAIL each other. Only OverSeer may message **across** workspaces.
 
 We run it as **Hermes**. A **pulse** is a **Hermes agent cron** in that pane. It is not a Herdr CLI command. Ask Hermes to create the cron (interval, which workspaces, what to do). Hermes wakes, looks, maybe EMAILS a lead, and sleeps.
 
@@ -70,11 +70,11 @@ Then:
 
 Cross-workspace EMAIL goes to the **lead of that workspace**, not builder to builder.
 
-If you skip OverSeer, each lead keeps their own wait. You lose one watchdog that can see Os and App.
+If you skip OverSeer, each lead keeps their own wait. You lose one watchdog that can see Engine and Product.
 
-## Noveon Misc (`w8`)
+## Scratch workspace
 
-Scratch terminals and other checkouts. Keeps random cwd hopping off the Os and App tab bars.
+Scratch terminals and other checkouts. Keeps random cwd hopping off the Engine and Product tab bars.
 
 ## How to invent yours
 
@@ -94,7 +94,7 @@ Name **roles**, not model brands:
 
 Pick CLI **kinds** (grok, cursor, claude, codex, hermes, …) from what they do well, not from the tab label.
 
-Do not copy a 12-tab Os roster for three humans and one bot. Start with:
+Do not copy a 12-tab Engine roster for three humans and one bot. Start with:
 
 `Lead | Builder | Reviewer | Process`
 

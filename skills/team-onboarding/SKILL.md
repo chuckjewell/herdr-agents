@@ -5,7 +5,7 @@ description: >
   to baseline roles, write roster and skills, configure workspace and
   named tabs, onboard the lead like any seat, then have the lead onboard
   the rest. Use when the user wants a new workspace, a new team, or
-  "set up Herdr like Noveon." Requires HERDR_ENV=1 for layout steps.
+  "set up a Herdr agent team." Requires HERDR_ENV=1 for layout steps.
 ---
 
 # Team onboarding
@@ -14,7 +14,7 @@ You are setup air traffic control (ATC): design session, then standup. Do not me
 
 Load the **official** Herdr skill before any `herdr` mutate (`npx skills add herdrdev/herdr --skill herdr -g`). Team extras: `agent-behavior` § Herdr extras — do not fork herdr. EMAIL format lives in `skills/conduct`. Templates and baselines live in **HERDR_AGENTS_KIT** (AGENTS.md `HERDR_AGENTS_KIT`, or `.agents/herdr-agents.path`, or ask the human and write that file). Do not resolve `examples/` relative to the product cwd.
 
-Each **new workspace** (Os, App, OverSeer, a friend's team) repeats this whole skill. Do not skip the design session because "we already have Os."
+Each **new workspace** (Engine, Product, OverSeer, a friend's team) repeats this whole skill. Do not skip the design session because "we already have Engine."
 
 This walk is **multi-turn**. After each human gate, stop and wait. When they say continue (or start a CLI / confirm a roster), resume the **last unfinished step**. Do not restart from step 1 unless they say the roster changed. Do not skip a phase. Do not start phase N until its **gate** is met.
 
@@ -56,11 +56,11 @@ Starter shapes (edit hard):
 |---|---|
 | Default / unknown | Lead, Builder, Review (hostile or semantic), Process |
 | Web / UI | that set **plus** a UI/browser tester (click, forms, viewports — e.g. a `dev-browser` skill on that seat) |
-| Engine / high-stakes correctness | Os-like: Lead, Builder(s), Hostile, Semantic/source, Process; Advice optional |
-| Product app + backend | App-like: Lead, UI, Fullstack, Review, Process |
+| Engine / high-stakes correctness | Engine-like: Lead, Builder(s), Hostile, Semantic/source, Process; Advice optional |
+| Product app + backend | Product-like: Lead, UI, Fullstack, Review, Process |
 | Tiny / solo+one bot | Lead + Builder only; Process can be the human |
 
-Baselines to steal from (not a clone mandate): `$HERDR_AGENTS_KIT/docs/workspaces.md`, `examples/noveon-os.md`, `examples/noveon-app.md`. Catalog: lead, builder, hostile/repro, semantic/source, process, advice, OverSeer.
+Baselines to steal from (not a clone mandate): `$HERDR_AGENTS_KIT/docs/workspaces.md`, `examples/engine-roster.md`, `examples/product-roster.md`. Catalog: lead, builder, hostile/repro, semantic/source, process, advice, OverSeer.
 
 **Use-case extra seat:** if a kit skill or a product skill would make the team better (web → UI tester; data → spreadsheet seat; docs → writer), **name it** and say why. That is an extra tab + optional repo skill on that occupant — not a unique fork of herdr/conduct.
 
@@ -85,7 +85,7 @@ In the product checkout (cwd the panes will use):
 
 1. `$HERDR_AGENTS_KIT/scripts/install-skills.sh --repo <product>` if not already linked (conduct, process, agent-behavior, **this skill** — not official herdr).
 2. Paste `examples/AGENTS.snippet.md` into `AGENTS.md` if missing. Codex needs that block.
-3. Save the roster next to it (copy Os/App examples and edit).
+3. Save the roster next to it (copy Engine/Product examples and edit).
 4. Process seat also loads `skills/process`. Advice seat does not get merge authority.
 
 Do not write a unique SKILL.md per tab unless it is a real extra (e.g. `dev-browser` for UI tester). Seats share official herdr + agent-behavior; product packets use `conduct`. Role comes from the **tab name + roster**. If step 1 agreed loop edits, apply them to `conduct` / AGENTS snippet **now**, before layout.
@@ -116,7 +116,7 @@ Product packets only after the roll-call is in.
 
 ## 6. Another workspace later
 
-Same skill from step 1. App does not inherit Os's roll-call. OverSeer is a tiny workspace (Hermes + crons); still onboard its occupant.
+Same skill from step 1. Product does not inherit Engine's roll-call. OverSeer is a tiny workspace (Hermes + crons); still onboard its occupant.
 
 ## Later (not this skill)
 
