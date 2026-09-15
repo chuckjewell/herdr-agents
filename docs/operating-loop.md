@@ -1,26 +1,28 @@
-# Operating loop
+# Packet and harvest notes
 
-Full story of *our* loop (busy lanes, dual review, Process, merge, how to change it): [`conductor-loop.md`](conductor-loop.md).
+This page is a short cheat sheet for humans. The full story is [`conductor-loop.md`](conductor-loop.md).
 
-The loop is **split**: official herdr skill = multiplexer; `agent-behavior` = air traffic control (ATC) steps; `conduct` = EMAIL + dual + Process.
+Official herdr skill = multiplexer. `agent-behavior` = air traffic control (ATC) steps. `conduct` = EMAIL + two reviews + Process.
 
-## Roles (portable)
+**EMAIL** = `FROM` / `TO` / `SUBJECT`, then the work. **WIP=1** = one active packet on a seat.
 
-| Role | Authority | Ban |
+## Roles
+
+Copy the **jobs**, not our nicknames (Sage, Astra, DarkHorse).
+
+| Role | May | Must not |
 |---|---|---|
-| Human (strategy) | Outcomes, doctrine, exceptions | — |
-| Lead | Sequence, packets, integration lease, guarded merge | Grading their own code as "independent" |
-| Builder | One overlapping surface, one PR | Merge, restamp, widening the packet |
-| Semantic/source reviewer | Truth vs source | Implementing the fix they just graded |
+| Human | Outcomes, exceptions | — |
+| Lead | Sequence, packets, merge | Grade their own code as independent |
+| Builder | One overlapping surface, one PR | Merge, widen the packet |
+| Semantic/source reviewer | Truth vs source | Implement the fix they just graded |
 | Hostile/repro reviewer | Break it, exact pins | Same |
-| Process | Written law / provenance | Third product grade, invented gates |
-| Advice | Bound opinion | Execution, merge, queue authority |
-
-Labels (`Sage`, `Astra`, `DarkHorse`) are ours. Copy the **authorities**, not the names.
+| Process | Written law / provenance | A third product grade |
+| Advice | Bound opinion | Execute, merge, own the queue |
 
 ## Packet
 
-Dispatch is a **self-contained order**, not a vibe:
+A self-contained order. Template: [`examples/packet.md`](../examples/packet.md).
 
 ```
 FROM / TO / SUBJECT
@@ -28,74 +30,68 @@ PINS: repo, branch, HEAD, BASE, paths
 DO: one bounded outcome
 DON'T: merge, extra surfaces, suite unless named
 RECEIPT: durable path under artifacts/
-CALLBACK: how the lead learns (herdr agent prompt lead …)
-BUDGET: wall clock / no --wait on the worker's callback
+CALLBACK: herdr agent prompt <lead>
+BUDGET: wall clock; no --wait on the worker's callback
 ```
 
-See [`examples/packet.md`](../examples/packet.md).
+Worker:
 
-The worker:
+1. Read the whole packet. If it gave a sha256, ACK MATCH before you execute.
+2. Do only the DO.
+3. Write the receipt. Hash **after** the last write.
+4. Send **one** callback with path + sha256.
+5. Stop.
 
-1. Full-read + **hash ACK** before execute (if the packet gave a sha256).
-2. Does only the DO.
-3. Writes the receipt, **hashes after the final write**.
-4. Sends **one** callback with path + sha256.
-5. Stops. No novel, no extra PR.
-
-A `TO:` header is not delivery. `herdr agent prompt` (or a paste block if Herdr is down) is delivery. Desktop notifications are not.
+A `TO:` line is not delivery. `herdr agent prompt` is. Desktop notifications are not.
 
 ## Harvest
 
-Lead (or a named alternate) on `done` / pulse:
+When a pane looks finished:
 
-1. **Live `herdr agent get`** before assuming the seat is free.
-2. Read recent-unwrapped output **and** the receipt file.
-3. Runtime `done` without a receipt = not done (provider death, quota, abandoned turn).
-4. Close the packet (accept / hold with exact unblock / next successor).
-5. Do **not** add a new ask to the lane that just delivered unless the next packet is already queued and orthogonal.
+1. `herdr agent get` before you assume it is free.
+2. Read recent output **and** the receipt file.
+3. Runtime `done` with no receipt is not done (quota, crash, abandoned turn).
+4. Close the packet (accept, hold with exact unblock, or next successor).
+5. Do not add a new ask on that lane unless the next packet is already queued and uses different files.
 
-Sticky `done`: Herdr does not clear it when you CLI-read. A pulse that lists `finished-unseen` is a **weak** signal. Judge from receipts.
+Herdr does not clear `done` when you CLI-read. A pulse that lists `finished-unseen` is a weak signal. Judge from receipts.
 
-## WIP and dirty trees
+## One writer
 
-- One active packet per lane; one writer per overlapping path.
+- One packet per lane. One writer per overlapping path.
 - Never prompt `working`.
-- Never dispatch to a pane "because the tab is idle" without `agent get`.
-- A stand-down retires a **role**. It does not retract artifacts already written. If stood down mid-work, say exactly what was touched.
+- Never dispatch because “the tab looks idle” without `agent get`.
+- Standing down a **role** does not erase files already written. Say what was touched.
 
-## Dual review + Process
+## Two reviews and Process
 
 For anything that can land on the default branch:
 
-1. Independent **semantic/source** review at exact HEAD/BASE.
-2. Independent **hostile/repro** review (different occupant).
-3. **Process**: pins match, receipts exist, law followed — not "I also think the code is good."
-4. Lead: guarded squash `--match-head-commit <exact>` then ff-only default branch.
+1. Independent semantic/source review at exact HEAD/BASE.
+2. Independent hostile/repro review (different occupant).
+3. Process: pins match, receipts exist, law followed — not “I also like the code.”
+4. Lead: squash `--match-head-commit <exact>` then fast-forward the default branch.
 
-Lead-authored code is still builder work. The lead cannot supply both independent grades of their own diff.
+Code the lead wrote is still builder work. The lead cannot be both independent reviewers.
 
-## Counts
+## Numbers
 
-Every number has a **denominator and grain**. Missing measurement is `unavailable`, never `0`.
+Every count needs a **denominator** and a **grain**. If you did not measure, write `unavailable`, never `0`.
 
 ## Holds
 
-`HOLD_WITH_EXACT_UNBLOCK`: name the missing evidence, owner, and the condition that changes the decision. A worker HOLD or a code comment does not create a new approval gate by itself — cite the governing decision.
+`HOLD_WITH_EXACT_UNBLOCK`: name the missing evidence, the owner, and what would change the decision. A worker HOLD or a code comment is not a new gate unless the governing decision says so.
 
 ## Skill refresh
 
-Editing `SKILL.md` does not update running occupants. When it matters:
-
-- Send path + sha256.
-- Require full-read ACK.
-- Do **not** reset the session, change model, or replay charged work.
+Editing `SKILL.md` does not update running occupants. Send path + sha256. Require a full-read ACK. Do not reset the session or replay charged work.
 
 ## Optional ledger
 
-Long campaigns benefit from a tiny state machine (we use `tools/lane_watch.py` in the extract repo): `dispatch` / `respond` / `set staged_idle` / `poll`. Until you have that, a markdown table of packets is enough. Do not pretend a spreadsheet is live Herdr state.
+Long campaigns can use a small state machine (we use `tools/lane_watch.py` in our extract repo). Until then, a markdown table of packets is enough. A spreadsheet is not live Herdr state.
 
-A pulse is a **Hermes agent cron** on OverSeer (ask Hermes to create it). It reads occupant status, EMAILS leads about harvest/stuck/blocked, and does nothing when the board is quiet. Not invent-work authority. Details: [`workspaces.md`](workspaces.md) (OverSeer).
+A **pulse** is a Hermes agent cron on OverSeer. Ask Hermes to create it. It reads status and EMAILS leads. It does nothing when the board is quiet. Details: [`workspaces.md`](workspaces.md) (OverSeer).
 
-## Transport recovery
+## If a provider dies mid-packet
 
-If a worker hits a provider quota or dies without FINAL: do not reset the seat and replay the expensive run. Reconcile existing artifacts. A named alternate may finish a **receipt-only** closeout with execution budget zero. Repeated transport failure → one named fallback, not a resend loop.
+Do not reset the seat and replay the expensive run. Reconcile files you already have. A named alternate may finish a receipt-only closeout with no new execution. Repeated transport failure: one named fallback, not a resend loop.

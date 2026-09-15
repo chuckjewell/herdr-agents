@@ -1,6 +1,6 @@
 # AGENTS.md snippet — Herdr team
 
-Copy this **block** into the product repo your Herdr panes `cwd` into. Do not replace your product law with it. Do not paste Noveon OCR/ILPA doctrine unless that is your product.
+Copy this **block** into the product repo your Herdr panes use as the working directory. Do not replace your product rules with it.
 
 ```
 ## Herdr team (layout lives in Herdr; law lives here)

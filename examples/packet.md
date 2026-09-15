@@ -1,6 +1,6 @@
 # EMAIL / packet skeleton
 
-This is the organizing format: every dispatch and every FINAL looks like mail. Occupants load the rule from `skills/conduct` (Dispatch). This file is the fill-in template, not a second law.
+This page is a fill-in template. Occupants load the rule from `skills/conduct`. Every dispatch and every FINAL uses this mail shape.
 
 ```
 FROM: lead — w1:pD

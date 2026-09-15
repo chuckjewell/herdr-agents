@@ -1,6 +1,6 @@
 # Onboard ACK (EMAIL)
 
-Same packet for the **lead** and for every other seat. Human (or setup agent) → lead first; then lead → team.
+This page is a fill-in template. Use the same packet for the **lead** and for every other seat. Human (or setup agent) → lead first; then lead → team.
 
 ```
 FROM: <you> — <your_pane>

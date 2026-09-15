@@ -1,6 +1,6 @@
 # How to run team-onboarding
 
-This is planning / air traffic control (ATC). Use the same class of model you want for the lead.
+This page is what **you** paste to an agent. Use the same class of model you want for the lead. This is planning / air traffic control (ATC).
 
 It is **not one paste and done.** You will talk to it several times. That is the design.
 

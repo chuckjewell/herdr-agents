@@ -1,6 +1,6 @@
 # Example roster — Noveon App
 
-Workspace label: **Noveon App**. Same git root as Os for us, **different merge owner and WIP pool**.
+This is one worked example, not a required clone. Workspace label: **Noveon App**. Same git root as Os for us. Different merge owner and WIP pool.
 
 | Tab label | Suggested agent name | Kind we use | Job |
 |---|---|---|---|

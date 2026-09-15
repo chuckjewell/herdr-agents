@@ -1,5 +1,7 @@
 # Examples
 
+Files you copy, paste, or point an agent at.
+
 | File | Use |
 |---|---|
 | [`noveon-os.md`](noveon-os.md) | Engine/correctness factory roster (worked example) |

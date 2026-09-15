@@ -1,102 +1,127 @@
 # Herdr agents
 
-Named seats in [Herdr](https://herdr.dev), EMAIL packets between them, two independent reviews, then merge.
+This page is for you if you want to run several coding agents as a team in [Herdr](https://herdr.dev).
 
-- **Herdr** — workspaces, tabs, panes, occupant lifecycle.
-- **This repo** — who sits where, and how work is handed off.
-- **Your `AGENTS.md`** — product rules. Agents load these from the pane cwd.
+You will get: named seats, mail-shaped packets between them, two independent reviews, then merge.
 
-How that handoff works (and how to change it): [`docs/conductor-loop.md`](docs/conductor-loop.md). That's for you, not for agents.
+- **Herdr** is the multiplexer: workspaces, tabs, panes, and whether an agent is idle or working.
+- **This repo** is who sits where and how work is handed off.
+- **Your `AGENTS.md`** is product rules. Agents load it from the pane working directory.
 
-Install Herdr's own skill and leave it official:
+Read [`docs/conductor-loop.md`](docs/conductor-loop.md) to see how that handoff works and where to change it. That file is for humans. Do not load it into agents.
+
+Install Herdr’s own skill. Do not replace it with a fork:
 
 ```bash
 npx skills add herdrdev/herdr --skill herdr -g
 ```
 
-Our extras (tab titles aren't IDs, sticky `done`, live `agent get`) are in [`skills/agent-behavior`](skills/agent-behavior/SKILL.md). Details: [`docs/herdr-skill-delta.md`](docs/herdr-skill-delta.md).
+We keep a few extra rules (tab titles are not IDs; `done` stays after a CLI read; check live status before you prompt) in [`skills/agent-behavior/SKILL.md`](skills/agent-behavior/SKILL.md). Why: [`docs/herdr-skill-delta.md`](docs/herdr-skill-delta.md).
 
 ---
 
-## Walkthrough (new Herdr user)
+## Walkthrough (first time)
 
-### 1. Install Herdr and agent integrations
+### 1. Install Herdr and integrations
 
 ```bash
 curl -fsSL https://herdr.dev/install.sh | sh
 herdr
 ```
 
-First run walks you through onboarding. Install integrations for every CLI you will run in a pane (Grok, Claude, Codex, Cursor, Hermes, …) — setup menu, or `herdr integration install grok` (and `claude`, `codex`, `cursor`, `hermes`). `herdr integration` with no subcommand lists targets. That is how Herdr **recognizes** an occupant when you type `grok` in a pane.
+The first run walks you through setup. Then install an **integration** for each CLI you will run in a pane (Grok, Claude, Codex, Cursor, Hermes, and so on). Use the setup menu, or:
 
-Never run bare `herdr` **from an agent pane** (nested attach). Human guide: [herdr.dev/agent-guide.md](https://herdr.dev/agent-guide.md).
+```bash
+herdr integration install grok
+```
 
-### 2. Install the official Herdr skill (all agent types)
+Run `herdr integration` with no subcommand to list kinds. Herdr uses integrations to **recognize** the occupant when you type `grok` in a pane.
 
-From a **human** terminal, not from inside a nested `herdr`:
+Do not run bare `herdr` from inside an agent pane (that attaches another TUI). Human guide: [herdr.dev/agent-guide.md](https://herdr.dev/agent-guide.md).
+
+### 2. Install the official Herdr skill, then this kit
+
+In a **human** terminal (not nested in Herdr):
 
 ```bash
 npx skills add herdrdev/herdr --skill herdr -g
 ```
 
-That is Herdr’s own installer; it places the skill where Claude, Codex, Cursor, Grok, etc. look. Leave it official. Our extras are in **agent-behavior**, loaded at onboard.
+That command puts the skill where Claude, Codex, Cursor, Grok, and similar tools look. Leave that file official.
+
+Then install **team** skills from this repo (not the Herdr skill):
 
 ```bash
 git clone https://github.com/chuckjewell/herdr-agents.git ~/code/herdr-agents
 cd ~/code/herdr-agents
 chmod +x scripts/install-skills.sh
-./scripts/install-skills.sh                 # ~/.agents/skills so the standup pane can find team-onboarding
+./scripts/install-skills.sh
 ./scripts/install-skills.sh --repo /path/to/product
 ```
 
-`--repo` links the same team skills into the product (`.agents/skills` + Claude/Cursor/Grok copies) and writes `HERDR_AGENTS_KIT`. It does **not** overwrite official herdr. Paste [`examples/AGENTS.snippet.md`](examples/AGENTS.snippet.md) into product `AGENTS.md`. Codex needs that block.
+`--repo` links `conduct`, `process`, `agent-behavior`, and `team-onboarding` into the product (`.agents/skills` plus Claude/Cursor/Grok copies). It writes `HERDR_AGENTS_KIT` so agents can find examples. It does not overwrite the official Herdr skill.
 
-### 3. Run team-onboarding with a strong agent
+Paste [`examples/AGENTS.snippet.md`](examples/AGENTS.snippet.md) into the product `AGENTS.md`. Codex needs that block; it does not always load `.claude/skills`.
 
-Standup is planning / air traffic control (ATC). Use the same class of model you want for the lead.
+Running agents do not pick up new skill files until you send path + hash and they ACK. Do not reset sessions to force a reload.
+
+### 3. Run team-onboarding
+
+This is planning / air traffic control (ATC). Use the same class of model you want for the lead.
 
 1. In Herdr, start that agent in a pane.
-2. Paste the prompt in [`examples/run-team-onboarding.md`](examples/run-team-onboarding.md) (point it at this kit’s `skills/team-onboarding/SKILL.md`).
-3. Work the **team makeup** with it (several turns is normal). It should propose a starter roster, extra seats/skills for the use case, and flag if that roster cannot run [our loop](docs/conductor-loop.md) — then propose loop edits. Keep **our lead** unless you have a better concept. Say the team is **ready to build** before it creates Herdr tabs. After each stop it should say **where you are** and what is still left.
-4. When asked, start the **lead** CLI, then tell it the pane is live. Then start the other CLIs when asked.
-5. It onboards the **lead** with official **herdr** + **agent-behavior**. Then it tells the lead to onboard every other pane with those **same two skills**. If it goes idle mid-walk, paste the continue line from that example file.
+2. Paste the prompt in [`examples/run-team-onboarding.md`](examples/run-team-onboarding.md).
+3. Talk through **team makeup** (several turns is normal). It should propose a starter roster, extra seats for your project type, and whether that roster can run [our loop](docs/conductor-loop.md). If not, it should propose edits. Keep **our lead** unless you have a better idea. Say the team is **ready to build** before it creates Herdr tabs. After each stop it should say where you are and what is still left.
+4. When asked, start the **lead** CLI. Tell it the pane is live. Then start the other CLIs when asked.
+5. It onboards the lead with official **herdr** + **agent-behavior**. Then it tells the lead to onboard every other pane with those same two skills. If it goes idle mid-walk, paste the continue line from the example file.
 
-Exact walk: [`skills/team-onboarding/SKILL.md`](skills/team-onboarding/SKILL.md). Human index: [`docs/onboarding.md`](docs/onboarding.md). Repeat for each new workspace.
+This is several conversations, not one paste. Repeat for each new workspace.
 
-Prompt **pane ID** or **live agent name**, never a tab title. `idle` = ready seen; `done` = ready unseen; `working` = do not prompt; `blocked` = ask the user.
+Exact walk (for the agent): [`skills/team-onboarding/SKILL.md`](skills/team-onboarding/SKILL.md). Short index: [`docs/onboarding.md`](docs/onboarding.md).
 
-### 4. Day-to-day: **agent-behavior** pane onboard
+Prompt a **pane ID** (for example `w1:pD`) or a **live agent name**, never a tab title.
 
-Not team-onboarding. Exit Codex, run `grok` in that shell, tell the **lead** to onboard that pane ([`skills/agent-behavior/SKILL.md`](skills/agent-behavior/SKILL.md)). Same EMAIL ACK. Same role.
+| Status | Meaning |
+|---|---|
+| `idle` | Ready, and someone has seen the last completion |
+| `done` | Ready, last completion unseen. A CLI read does not clear this. |
+| `working` | Do not prompt |
+| `blocked` | Inspect the UI. Ask the user before answering. |
+
+A Herdr `done` is not a finished packet. A packet is done when a receipt path and sha256 reach the requester.
+
+### 4. Day to day: onboard one pane
+
+Not team-onboarding. Exit the old CLI. Start the new one in that shell. Tell the **lead** to onboard that pane ([`skills/agent-behavior/SKILL.md`](skills/agent-behavior/SKILL.md)). Same EMAIL ACK. Same role.
 
 ---
 
-## Repo map
+## Files in this repo
 
 | Path | When you need it |
 |---|---|
-| [`scripts/install-skills.sh`](scripts/install-skills.sh) | Team skills only (not official herdr) |
-| [`examples/run-team-onboarding.md`](examples/run-team-onboarding.md) | Paste to a strong air-traffic-control (ATC) agent |
-| [`docs/build-a-workspace.md`](docs/build-a-workspace.md) | Layout recipe used by team-onboarding |
-| [`docs/workspaces.md`](docs/workspaces.md) | Os / App / OverSeer baselines |
-| [`docs/operating-loop.md`](docs/operating-loop.md) | Compact packet/harvest cheat |
-| [`docs/conductor-loop.md`](docs/conductor-loop.md) | Human: what the loop does, where to change it (not a skill) |
-| [`docs/onboarding.md`](docs/onboarding.md) | Human index |
-| [`skills/team-onboarding/`](skills/team-onboarding/) | First standup walk |
+| [`scripts/install-skills.sh`](scripts/install-skills.sh) | Team skills only (not official Herdr) |
+| [`examples/run-team-onboarding.md`](examples/run-team-onboarding.md) | Paste this to a strong ATC agent |
+| [`docs/build-a-workspace.md`](docs/build-a-workspace.md) | Layout commands (used by team-onboarding) |
+| [`docs/workspaces.md`](docs/workspaces.md) | Example workgroups: Os, App, OverSeer |
+| [`docs/operating-loop.md`](docs/operating-loop.md) | Short packet and harvest notes |
+| [`docs/conductor-loop.md`](docs/conductor-loop.md) | How the loop works and where to change it |
+| [`docs/onboarding.md`](docs/onboarding.md) | Short standup index |
+| [`skills/team-onboarding/`](skills/team-onboarding/) | First-time standup (agent skill) |
 | [`docs/herdr-skill-delta.md`](docs/herdr-skill-delta.md) | Why extras live in agent-behavior |
-| [`examples/`](examples/) | Rosters, AGENTS snippet, EMAIL skeleton |
-| [`skills/conduct/`](skills/conduct/) | EMAIL, WIP=1, harvest |
+| [`examples/`](examples/) | Rosters, AGENTS snippet, EMAIL templates |
+| [`skills/conduct/`](skills/conduct/) | EMAIL, one packet per seat, harvest |
 | [`skills/process/`](skills/process/) | Written-law closeout, not a product grade |
 | [`skills/agent-behavior/`](skills/agent-behavior/) | Herdr extras + day-to-day pane onboard |
 
-## Not packed
+## What this repo does not include
 
-- `~/.config/herdr/session.json` (live IDs)
-- Noveon extract engine doctrine
-- Campaign `artifacts/` / Lane Watch DB
+- Your live Herdr layout (`~/.config/herdr/session.json`)
+- Our extract-engine product rules
+- Campaign artifacts and Lane Watch databases
 
-Lane Watch is optional (`tools/lane_watch.py` in our extract checkout). Start with markdown packets.
+Lane Watch (`tools/lane_watch.py` in our extract checkout) is optional. A markdown list of packets is enough to start.
 
-## Origin
+## Where this came from
 
-Extracted from how we run engine work in Herdr. Official skill: `npx skills add herdrdev/herdr --skill herdr -g`.
+We extracted this from how we run engine work in Herdr. Official skill: `npx skills add herdrdev/herdr --skill herdr -g`.

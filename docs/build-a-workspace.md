@@ -1,8 +1,10 @@
-# Build a workspace (agent recipe)
+# Build a workspace
 
-Use this only when the user asked you to create Herdr layout. Requires `HERDR_ENV=1`.
+This page is a seating-chart recipe for an agent that already loaded the official Herdr skill. Humans can read it. Use it only when the user asked you to create layout. Requires `HERDR_ENV=1`.
 
-**Load the official Herdr skill first** (`npx skills add herdrdev/herdr --skill herdr -g`). Team extras (tab titles, sticky `done`, live `get`) are in `agent-behavior`, not a herdr fork. This file is only the seating chart: labels, kinds, cwd, `--no-focus`.
+Load the official Herdr skill first (`npx skills add herdrdev/herdr --skill herdr -g`). Extra rules (tab titles, sticky `done`, live `get`) are in `agent-behavior`. Do not fork herdr.
+
+`--no-focus` on creates so you do not steal the user’s tab. Do not close panes you did not create. The installed `herdr` binary is the syntax authority (`herdr --help`). Never run bare `herdr` (that attaches the TUI).
 
 The installed binary is syntax authority. Run `herdr --help` and `herdr workspace` / `herdr tab` / `herdr agent` / `herdr pane` with **no subcommand** if flags may have changed. Never bare `herdr` (TUI attach).
 

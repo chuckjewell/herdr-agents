@@ -1,6 +1,6 @@
 # Example roster — Noveon Os
 
-Workspace label: **Noveon Os**. cwd: extract/engine checkout. One tab per seat; kinds are *ours today*, not a requirement.
+This is one worked example, not a required clone. Workspace label: **Noveon Os**. Working directory: extract/engine checkout. One tab per seat. Kinds are what we use today.
 
 | Tab label (cosmetic) | Suggested agent name | Kind we use | Job |
 |---|---|---|---|
