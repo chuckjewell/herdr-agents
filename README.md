@@ -39,10 +39,11 @@ That is Herdr’s own installer; it places the skill where Claude, Codex, Cursor
 git clone <this-repo> ~/code/herdr-agents
 cd ~/code/herdr-agents
 chmod +x scripts/install-skills.sh
+./scripts/install-skills.sh                 # ~/.agents/skills so the ATC pane can find team-onboarding
 ./scripts/install-skills.sh --repo /path/to/product
 ```
 
-That links **team** skills (`conduct`, `process`, `agent-behavior`, `team-onboarding`) into `.agents/skills` (and Claude/Cursor/Grok copies). It does **not** overwrite the official herdr skill. Paste [`examples/AGENTS.snippet.md`](examples/AGENTS.snippet.md) into the product `AGENTS.md` and set `HERDR_AGENTS_KIT`. Codex needs that block.
+`--repo` links the same team skills into the product (`.agents/skills` + Claude/Cursor/Grok copies) and writes `HERDR_AGENTS_KIT`. It does **not** overwrite official herdr. Paste [`examples/AGENTS.snippet.md`](examples/AGENTS.snippet.md) into product `AGENTS.md`. Codex needs that block.
 
 ### 3. Run team-onboarding with a strong agent
 
@@ -69,19 +70,17 @@ Not team-onboarding. Exit Codex, run `grok` in that shell, tell the **lead** to 
 | Path | When you need it |
 |---|---|
 | [`scripts/install-skills.sh`](scripts/install-skills.sh) | Team skills only (not official herdr) |
-| [`examples/run-team-onboarding.md`](examples/run-team-onboarding.md) | Paste to a strong agent to start standup |
-
+| [`examples/run-team-onboarding.md`](examples/run-team-onboarding.md) | Paste to a strong ATC agent |
 | [`docs/build-a-workspace.md`](docs/build-a-workspace.md) | Layout recipe used by team-onboarding |
 | [`docs/workspaces.md`](docs/workspaces.md) | Os / App / OverSeer baselines |
 | [`docs/operating-loop.md`](docs/operating-loop.md) | Packets after standup |
 | [`docs/onboarding.md`](docs/onboarding.md) | Human index |
 | [`skills/team-onboarding/`](skills/team-onboarding/) | First standup walk |
-| [`docs/herdr-skill-delta.md`](docs/herdr-skill-delta.md) | Why extras live in agent-behavior, not a herdr fork |
+| [`docs/herdr-skill-delta.md`](docs/herdr-skill-delta.md) | Why extras live in agent-behavior |
 | [`examples/`](examples/) | Rosters, AGENTS snippet, EMAIL skeleton |
-
 | [`skills/conduct/`](skills/conduct/) | EMAIL, WIP=1, harvest |
 | [`skills/process/`](skills/process/) | Written-law closeout, not a product grade |
-| [`skills/agent-behavior/`](skills/agent-behavior/) | Day-to-day pane onboard + assign → harvest → wait |
+| [`skills/agent-behavior/`](skills/agent-behavior/) | Herdr extras + day-to-day pane onboard |
 
 ## Not packed
 

@@ -41,7 +41,7 @@ Get a human yes on that roster before touching Herdr.
 
 In the product checkout (cwd the panes will use):
 
-1. `scripts/install-skills.sh --repo <product>` if not already linked (herdr, conduct, process, agent-behavior, **this skill**).
+1. `$HERDR_AGENTS_KIT/scripts/install-skills.sh --repo <product>` if not already linked (conduct, process, agent-behavior, **this skill** — not official herdr).
 2. Paste `examples/AGENTS.snippet.md` into `AGENTS.md` if missing. Codex needs that block.
 3. Save the roster next to it (copy Os/App examples and edit).
 4. Process seat also loads `skills/process`. Advice seat does not get merge authority.
