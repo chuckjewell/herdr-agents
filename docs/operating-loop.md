@@ -92,7 +92,7 @@ Editing `SKILL.md` does not update running occupants. When it matters:
 
 Long campaigns benefit from a tiny state machine (we use `tools/lane_watch.py` in the extract repo): `dispatch` / `respond` / `set staged_idle` / `poll`. Until you have that, a markdown table of packets is enough. Do not pretend a spreadsheet is live Herdr state.
 
-A 15-minute "pulse" (OverSeer) is a **reminder to the lead**, not a license to invent work when `quiet=true`.
+A pulse (OverSeer) is a **reminder to a lead**, not a license to invent work when `quiet=true`. OverSeer is the only agent that EMAILS **across** workspaces; Os/App leads stay in their own WIP pool. We use Hermes there for crons that check lane/lead progress and unstick. See [`workspaces.md`](workspaces.md).
 
 ## Transport recovery
 

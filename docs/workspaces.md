@@ -46,9 +46,13 @@ Typical seats ([`examples/noveon-app.md`](../examples/noveon-app.md)):
 
 If your app and engine are actually different repos, give them different `--cwd` values. Our App workspace mostly still sits on the extract checkout because that is where `AGENTS.md` and the skills live; one tab (`Muse`) points at `app/`.
 
-## OverSeer (`w7`) — metronome, not a builder
+## OverSeer (`w7`) — only cross-workspace talker
 
-A small workspace whose job is **cadence**: "every 15 minutes, remind the Os lead to poll due lanes." It does not own PRs. If you skip this, the lead keeps a bounded wait in their own pane instead.
+Os and App leads do **not** EMAIL each other. The only seat allowed to communicate **across workspaces** is OverSeer.
+
+We run it as **Hermes** because Hermes can schedule agent crons: poll other lanes/leads, nudge a stuck roll-call, remind Os to harvest. It does not own PRs, does not dual-review, does not merge. A pulse is a reminder, not a license to invent work when the board is quiet.
+
+If you skip OverSeer, each lead keeps their own bounded wait. You lose a single watchdog that can see Os *and* App.
 
 ## Noveon Misc (`w8`) — junk drawer with a lid
 
@@ -70,7 +74,7 @@ Then name **roles**, not people-models:
 - **semantic/source** (is it true)
 - **process** (was the law followed)
 - optional **advice** (scarce, no authority)
-- optional **metronome**
+- optional **metronome / OverSeer** (only cross-workspace EMAIL; Hermes if you want crons)
 
 Pick agent **kinds** (grok, cursor, claude, codex, hermes, …) from demonstrated fit, not from the tab label. Labels do not prove quality. We often put a strong reasoner on source review and a cheaper capable model on deterministic ops.
 

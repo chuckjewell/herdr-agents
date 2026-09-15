@@ -67,7 +67,7 @@ Confirm `HERDR_ENV=1` in that pane. That occupant needs the Herdr skill (step 2)
 
 ### 5. Learn the two workgroups (optional, but the point of the examples)
 
-[`docs/workspaces.md`](docs/workspaces.md): **Os** = correctness factory (dual review + Process before merge). **App** = product/UI, same git root, **different WIP pool and merge owner**. OverSeer = metronome. Invent yours from merge-object + who cannot self-grade.
+[`docs/workspaces.md`](docs/workspaces.md): **Os** = correctness factory (dual review + Process before merge). **App** = product/UI, same git root, **different WIP pool and merge owner**. **OverSeer** = only cross-workspace talker (Hermes crons that ping stuck leads). Invent yours from merge-object + who cannot self-grade.
 
 ### 6. Run the team as EMAIL, not novels
 
