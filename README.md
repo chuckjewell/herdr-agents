@@ -1,108 +1,111 @@
 # Herdr agents
 
-A portable kit for running **several coding agents as a visible team** inside [Herdr](https://herdr.dev): named workspaces, one agent per tab, bounded packets, receipts, and a lead who harvests instead of hoping.
-
-This is not a Herdr `config.toml` dump and not a Noveon product dump. It is the **method**: how we split work, why the rooms look different, and how an agent can build the same kind of layout for *your* workgroups.
+A portable kit for running **several coding agents as a visible team** inside [Herdr](https://herdr.dev).
 
 ```
-Herdr          = rooms, panes, agent lifecycle (the building)
-This kit       = how the team is allowed to move in those rooms
-Your AGENTS.md = product law for the repo the panes sit in
+Herdr          = rooms, panes, agent lifecycle
+This kit       = seating chart + how the team hands work
+Your AGENTS.md = product law in the repo the panes sit in
 ```
 
-Herdr does not store Chuck/Astra/Process doctrine. Occupants load whatever `AGENTS.md` and skills exist in the pane's **cwd**. Put team law in the repo; put rooms in Herdr.
+Herdr does not store your doctrine. Occupants load `AGENTS.md` and skills from **cwd**. The **Herdr skill** is what makes an agent good at *building the rooms*. This kit adds *which seats* and *EMAIL packets*.
 
-**The Herdr skill is what makes an agent good at building the rooms.** Give a pane `skills/herdr/SKILL.md` plus a roster (who sits where) and it will create workspaces, named tabs, and started agents the way we do here. This kit's extra docs are *which seats* and *how they hand work*, not a substitute for that skill.
+`skills/herdr` is [upstream v0.9.0](https://github.com/herdrdev/herdr/blob/v0.9.0/skills/herdr/SKILL.md) with a few inserts ([what/why](docs/herdr-skill-delta.md)). Wait/stall/blocked/server rules stay as upstream wrote them.
 
-Our `skills/herdr/SKILL.md` is [herdr `v0.9.0`](https://github.com/herdrdev/herdr/blob/v0.9.0/skills/herdr/SKILL.md) with a handful of inserts. We keep upstream’s wait/stall/blocked/server rules as written. What we added and why: [`docs/herdr-skill-delta.md`](docs/herdr-skill-delta.md).
+---
 
-## Why this exists
+## Walkthrough (new Herdr user)
 
-One chat with one bot is a pair programmer. A campaign with builders, independent reviewers, and a lead who merges is a **team**. Teams fail in predictable ways:
+### 1. Install Herdr
 
-- Two agents write the same surface.
-- A "done" pane never tells anyone (Herdr `done` is sticky and unread).
-- A lead dumps a novel into a working pane and blows WIP.
-- Merge happens on vibes, not dual review + written law.
-- Layout lives in one person's head (`session.json` on one laptop).
+The binary in `PATH` is syntax authority (`herdr --help`). **Never** run bare `herdr` from an agent (it attaches the TUI). Official first-run: [herdr.dev/agent-guide.md](https://herdr.dev/agent-guide.md).
 
-We treat those as operating bugs. The fix is **rooms + roles + packets + receipts**, not a smarter single model.
+### 2. Clone this kit and install skills where every client looks
 
-## What's in this repo
-
-| Path | Role |
-|---|---|
-| [`docs/workspaces.md`](docs/workspaces.md) | Use cases: **Noveon Os** vs **Noveon App** (and OverSeer). How to invent your own. |
-| [`docs/build-a-workspace.md`](docs/build-a-workspace.md) | Agent-executable recipe: create workspace, tabs, start agents. |
-| [`docs/herdr-skill-delta.md`](docs/herdr-skill-delta.md) | What we changed vs upstream v0.9.0 and why (scars, not philosophy). |
-| [`docs/operating-loop.md`](docs/operating-loop.md) | Packets, harvest, dual review, Process, no-reset skill refresh. |
-| [`examples/`](examples/) | Concrete rosters and the EMAIL/packet skeleton (`FROM`/`TO`/`SUBJECT`). |
-| [`examples/AGENTS.snippet.md`](examples/AGENTS.snippet.md) | The **one block** to add to a product `AGENTS.md`. |
-| [`skills/herdr/`](skills/herdr/) | Canonical Herdr CLI skill (how an agent *drives* Herdr). |
-| [`skills/agent-behavior/`](skills/agent-behavior/) | Generic conductor loop (assign → harvest → wait). |
-| [`skills/conduct/`](skills/conduct/) | Portable lane orchestration (WIP=1, receipts, one finalizer). |
-| [`skills/process/`](skills/process/) | Written-law checker: not a third product grade. |
-
-Install the skills into each client you actually run (`~/.claude/skills`, `~/.grok/skills`, `~/.cursor/skills`). **One canonical copy, then symlink.** Do not keep three editors as three sources of truth.
+One canonical copy, then **symlinks**. Do not fork a skill per vendor.
 
 ```bash
-# from this checkout
-CANON="$PWD/skills"
-for client in claude grok cursor; do
-  mkdir -p "$HOME/.$client/skills"
-  ln -sfn "$CANON/herdr" "$HOME/.$client/skills/herdr"
-done
-mkdir -p "$HOME/.agents/skills" "$HOME/.claude/skills"
-ln -sfn "$CANON/agent-behavior" "$HOME/.agents/skills/agent-behavior"
-ln -sfn "$CANON/agent-behavior" "$HOME/.claude/skills/agent-behavior"
+git clone <this-repo> ~/code/herdr-agents
+cd ~/code/herdr-agents
+chmod +x scripts/install-skills.sh
+./scripts/install-skills.sh --repo /path/to/your/product
 ```
 
-Repo-local skills (`conduct`, `process`) belong **in the product checkout** the panes `cwd` into, e.g. `.claude/skills/conduct`, so every kind (Grok, Cursor, Codex) sees the same law.
+Without `--repo`, only user-global `herdr` is linked.
 
-## Mental model
+| Client | User-global | In the product repo (cwd) |
+|---|---|---|
+| Claude Code | `~/.claude/skills/` | `.claude/skills/` |
+| Cursor | `~/.cursor/skills/` | `.cursor/skills/` |
+| Grok | `~/.grok/skills/` (also scans Claude/Cursor/`.agents`) | `.grok/skills/`, `.agents/skills/` |
+| Codex | `~/.codex/skills/` | **`AGENTS.md` always-on**; optional `.agents/skills/` |
+| Hermes | `~/.hermes/skills/` | vendor-specific |
 
-```
-workspace  = a workgroup (Os, App, Oversight)
-tab        = one named seat (Astra, Tools, UI Builder)
-pane       = the terminal
-agent      = recognized occupant (grok / cursor / claude / …)
-name       = live handle you prompt (`astra`, `tools`) — not the tab label
-```
+Grok (and some others) also walk **`.agents/skills/`** from cwd to repo root. The installer puts team skills there first, then points `.claude` / `.cursor` / `.grok` at the same directories so they cannot drift.
 
-Tab labels are **cosmetic**. `herdr agent prompt` takes a **pane ID** (`w1:pD`) or a **live agent name**. Never a tab title. We learned that the expensive way.
+**Codex** will not reliably load a repo `.claude/skills` tree. Put the EMAIL/WIP block in [`examples/AGENTS.snippet.md`](examples/AGENTS.snippet.md) into `AGENTS.md` so Codex sees the same law.
 
-States that actually matter:
+Already-running occupants do **not** hot-reload. Send path+sha256 and require a full-read ACK. Do not reset sessions.
 
-| Herdr `agent_status` | Meaning |
+### 3. Put the team block in the product repo
+
+Paste [`examples/AGENTS.snippet.md`](examples/AGENTS.snippet.md) into that repo’s `AGENTS.md`. Keep your product rules. This block is only Herdr-team law: WIP=1, EMAIL `FROM`/`TO`/`SUBJECT`, Process is not a third grade.
+
+### 4. Open Herdr, get one pane inside it
+
+Confirm `HERDR_ENV=1` in that pane. That occupant needs the Herdr skill (step 2). Ask it to **build the roster** — not to invent one:
+
+- Recipe: [`docs/build-a-workspace.md`](docs/build-a-workspace.md)
+- Example seats: [`examples/noveon-os.md`](examples/noveon-os.md) (engine factory) or [`examples/noveon-app.md`](examples/noveon-app.md) (product/UI)
+
+`--no-focus` on creates. Start agents only in empty shell panes.
+
+### 5. Learn the two workgroups (optional, but the point of the examples)
+
+[`docs/workspaces.md`](docs/workspaces.md): **Os** = correctness factory (dual review + Process before merge). **App** = product/UI, same git root, **different WIP pool and merge owner**. OverSeer = metronome. Invent yours from merge-object + who cannot self-grade.
+
+### 6. Run the team as EMAIL, not novels
+
+Every dispatch and every FINAL is mail-shaped. Occupants load that from [`skills/conduct/SKILL.md`](skills/conduct/SKILL.md). Fill-in template: [`examples/packet.md`](examples/packet.md).
+
+Loop: [`docs/operating-loop.md`](docs/operating-loop.md) — harvest receipts, dual independent review, Process written-law, one finalizer.
+
+Tab labels are cosmetic. Prompt **pane ID** (`w1:pD`) or **live agent name**, never “Sage” as a title.
+
+| `agent_status` | Meaning |
 |---|---|
 | `idle` | Ready and seen |
-| `done` | Ready, **unseen** completion — harvest; do not infer from the badge alone |
-| `working` | WIP=1. Do not prompt. |
-| `blocked` | Approval UI. Inspect; do not guess the dialog. |
+| `done` | Ready, **unseen** — harvest; CLI read does not clear it |
+| `working` | Do not prompt |
+| `blocked` | Inspect UI; ask the user (upstream rule) |
 
-A receipt not delivered (path + sha256 to the requester) is **not done**. Runtime `done` is not a successful packet.
+Runtime `done` ≠ packet done. A receipt not delivered (path+sha256) is not done.
 
-## Quick start (human)
+---
 
-1. Install Herdr. The installed binary is syntax authority: `herdr --help`. **Never** run bare `herdr` from an agent (it attaches the TUI).
-2. Clone this kit. Symlink `skills/herdr` as above.
-3. Paste [`examples/AGENTS.snippet.md`](examples/AGENTS.snippet.md) into the product repo's `AGENTS.md`.
-4. Copy `skills/conduct` and `skills/process` into that repo's `.claude/skills/` (and `.cursor/skills/` if you use Cursor).
-5. In a pane that already has the Herdr skill, ask it to **build the roster** (Os, App, or your own). Point at [`docs/build-a-workspace.md`](docs/build-a-workspace.md) + [`examples/noveon-os.md`](examples/noveon-os.md). That skill is the setup muscle; the example is only the seating chart.
+## Repo map
 
-## Quick start (agent already in Herdr)
+| Path | When you need it |
+|---|---|
+| [`scripts/install-skills.sh`](scripts/install-skills.sh) | Step 2 |
+| [`docs/build-a-workspace.md`](docs/build-a-workspace.md) | Step 4 (agent recipe) |
+| [`docs/workspaces.md`](docs/workspaces.md) | Step 5 |
+| [`docs/operating-loop.md`](docs/operating-loop.md) | Step 6 |
+| [`docs/herdr-skill-delta.md`](docs/herdr-skill-delta.md) | What we inserted vs upstream |
+| [`examples/`](examples/) | Rosters, AGENTS snippet, EMAIL skeleton |
+| [`skills/herdr/`](skills/herdr/) | Drive Herdr |
+| [`skills/conduct/`](skills/conduct/) | EMAIL, WIP=1, harvest |
+| [`skills/process/`](skills/process/) | Written-law closeout, not a product grade |
+| [`skills/agent-behavior/`](skills/agent-behavior/) | Generic assign → harvest → wait |
 
-Read `skills/herdr/SKILL.md`, then `docs/build-a-workspace.md`. Create layout with `--no-focus`. Start agents only in empty shell panes. Do not steal the user's focused tab.
+## Not packed
 
-## What we deliberately did not pack
+- `~/.config/herdr/session.json` (live IDs)
+- Noveon extract engine doctrine
+- Campaign `artifacts/` / Lane Watch DB
 
-- `~/.config/herdr/session.json` — your live pane IDs and session UUIDs
-- Noveon extract `AGENTS.md` engine doctrine (OCR, ILPA, Prisma) — product law, not Herdr
-- `artifacts/`, Lane Watch SQLite, OPEN_PACKETS — campaign debt, not the playbook
-- Grade / type-engine-review skills — those stay in the product repo
+Lane Watch is optional (`tools/lane_watch.py` in our extract checkout). Start with markdown packets.
 
-Lane Watch (`tools/lane_watch.py` in our extract checkout) is an **optional ledger** for long campaigns. The ideas (dispatch, respond, staged idle, one integration lease) are in [`docs/operating-loop.md`](docs/operating-loop.md). You can start with a markdown packet list.
+## Origin
 
-## License / origin
-
-Method distilled from a live multi-agent extract/engine campaign. `skills/herdr` is our compressed occupant skill (see origin note above). `skills/agent-behavior` matches `~/.agents/skills/agent-behavior`. This repo is the shareable source going forward.
+Live extract/engine campaign. This repo is the shareable source. `herdr --skill` prints whatever the **installed binary** ships; prefer this kit’s `skills/herdr` after install so extras (tab titles, sticky `done`, `PATH`) stay consistent.

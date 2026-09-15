@@ -16,8 +16,10 @@ BAN: merge/restamp/denominator change outside recorded authority. unavailable, n
 SKILL_ADOPTION: path+sha256 + full-read ACK; no session reset.
 ```
 
-Install matching skills in this checkout:
+Install matching skills so every client in this cwd can see them:
 
-- `.claude/skills/herdr` → symlink to this kit's `skills/herdr` (or rely on user-global)
-- `.claude/skills/conduct` and `.claude/skills/process` from this kit
-- `.cursor/skills/process` copy or symlink of the same process skill
+```bash
+/path/to/herdr-agents/scripts/install-skills.sh --repo "$PWD"
+```
+
+That links `.agents/skills` (shared) and `.claude` / `.cursor` / `.grok`. Codex still needs **this AGENTS.md block** — it does not reliably load `.claude/skills`.
