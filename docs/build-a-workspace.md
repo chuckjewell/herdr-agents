@@ -56,19 +56,11 @@ herdr pane split --pane <pane_id> --direction right --cwd "$PWD" --no-focus
 
 ## 3. Start agents
 
-The pane must be an **interactive shell with no foreground process**. Agent start does not create layout.
+The pane must be an **interactive shell**. In that terminal, run the agent CLI (`grok`, `claude`, `codex`, `cursor`, …). If `herdr integration status` shows that kind installed, Herdr recognizes it. You do not need `herdr agent start` for this.
 
-```bash
-herdr pane get <pane_id>   # confirm shell, not already an agent
-herdr agent start astra --kind grok --pane <pane_id>
-herdr agent start tools --kind cursor --pane <other_pane_id>
-```
+`herdr agent start` exists for scripted starts; it still requires an empty shell pane and never creates layout. Prefer the human path: type the CLI in the pane.
 
-Names: `[a-z][a-z0-9_-]{0,31}`, unique while live. Use the **role**, not the vendor (`tools`, not `cursor2`).
-
-Kinds are whatever `herdr agent start --help` lists today (`grok`, `cursor`, `claude`, `codex`, `hermes`, …).
-
-If `agent_not_ready`: inspect/read that pane; do not start a duplicate.
+Optional: `herdr agent` name the occupant after it is live (`[a-z][a-z0-9_-]{0,31}`). Use the **role**, not the vendor (`tools`, not `cursor2`).
 
 ## 4. First packet, not a novel
 

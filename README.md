@@ -16,9 +16,14 @@ Herdr does not store your doctrine. Occupants load `AGENTS.md` and skills from *
 
 ## Walkthrough (new Herdr user)
 
-### 1. Install Herdr
+### 1. Install Herdr and agent integrations
 
 The binary in `PATH` is syntax authority (`herdr --help`). **Never** run bare `herdr` from an agent (it attaches the TUI). Official first-run: [herdr.dev/agent-guide.md](https://herdr.dev/agent-guide.md).
+
+Install integrations for every CLI you will run in a pane (Grok, Claude, Codex, Cursor, Hermes, …). That is how Herdr **recognizes** the occupant — you can just type `grok` or `codex` in the pane’s shell.
+
+- **Setup menu** during Herdr install, or later in Herdr settings
+- **CLI:** `herdr integration status` then `herdr integration install grok` (and `claude`, `codex`, `cursor`, `hermes`, …). Run `herdr integration` with no subcommand for the current list.
 
 ### 2. Clone this kit and install skills where every client looks
 
@@ -58,7 +63,7 @@ Confirm `HERDR_ENV=1` in that pane. That occupant needs the Herdr skill (step 2)
 - Recipe: [`docs/build-a-workspace.md`](docs/build-a-workspace.md)
 - Example seats: [`examples/noveon-os.md`](examples/noveon-os.md) (engine factory) or [`examples/noveon-app.md`](examples/noveon-app.md) (product/UI)
 
-`--no-focus` on creates. Start agents only in empty shell panes.
+`--no-focus` on creates. Leave each new tab at a shell prompt and launch the agent CLI there (`grok`, `claude`, …). Herdr picks up the kind if that integration is installed.
 
 ### 5. Learn the two workgroups (optional, but the point of the examples)
 
@@ -85,7 +90,7 @@ Runtime `done` ≠ packet done. A receipt not delivered (path+sha256) is not don
 
 The lead sends herdr + conduct to each pane and harvests an **EMAIL role ACK** ([`docs/onboarding.md`](docs/onboarding.md)). Role is tab + roster, not “I am Codex.”
 
-You can **change the agent in a pane** (Codex hits a token limit → start Grok in the same pane). Ask the lead to onboard that pane. The new occupant reads the skills and ACKs the same role. Do not reset the rest of the workspace.
+You can **change the agent in a pane**: exit Codex, run `grok` in that same terminal, tell the lead to onboard the pane. Herdr recognizes the new kind if its integration is installed. Same role (tab + roster). Do not reset the rest of the workspace.
 
 ---
 

@@ -24,8 +24,8 @@ Harvest ACKs. Missing ACK = not onboarded. Do not assign product work until the 
 
 ## Swap the occupant (quota, crash, better kind)
 
-Herdr panes are sockets. You can stop Codex and `herdr agent start … --kind grok --pane <same-id>` (pane must be back at a shell prompt; see the Herdr skill). The **role does not change**.
+Exit the old agent so the pane is a normal shell. Start the new CLI in that same terminal (`grok`, `claude`, `codex`, …). If the matching **Herdr integration** is installed, Herdr recognizes the kind on its own — you do not need `herdr agent start`.
 
-Then: **ask the lead to onboard that pane** the same way. The new occupant reads skills + tab/roster and EMAIL-ACKs the same role. No session reset of the rest of the team. No replay of charged work unless the lead sends a bounded recovery packet.
+Then **ask the lead to onboard that pane**. Role is still the tab + roster. The new occupant EMAIL-ACKs the same seat. Do not reset the rest of the workspace. Do not replay charged work unless the lead sends a bounded recovery packet.
 
 Stand-down of a *role* is different: that is conduct (artifacts already written stay; say what was touched).

@@ -14,7 +14,7 @@ PROCESS: written-law/provenance only — not a third product grade, not merge.
 ADVICE: no execution or merge authority.
 BAN: merge/restamp/denominator change outside recorded authority. unavailable, never invented 0.
 SKILL_ADOPTION: path+sha256 + full-read ACK; no session reset.
-ONBOARD: lead rolls herdr+conduct to each pane; EMAIL ACK of role (tab/roster, not vendor). Kind swap in a pane → lead onboards that pane again.
+ONBOARD: lead rolls herdr+conduct to each pane; EMAIL ACK of role (tab/roster, not vendor). Swap occupant: exit, start the new CLI in that shell, tell the lead to onboard the pane.
 ```
 
 Install matching skills so every client in this cwd can see them:
