@@ -6,8 +6,8 @@ Same packet for the **lead** and for every other seat. Human (or setup agent) �
 FROM: <you> — <your_pane>
 TO: <pane_id>
 SUBJECT: Onboard — read herdr + conduct; ACK role
-SKILLS: <kit>/skills/herdr/SKILL.md sha256=<…>
-        <kit>/skills/agent-behavior/SKILL.md sha256=<…>
+SKILLS: official herdr (npx skills add herdrdev/herdr --skill herdr -g)
+        <kit>/skills/agent-behavior/SKILL.md sha256=<…>   # includes Herdr extras
         <kit>/skills/conduct/SKILL.md sha256=<…>
 DO: Full-read. ACK MATCH. Role = your tab + roster (not vendor). Idle until a work packet.
 CALLBACK: herdr agent prompt <requester_pane>  (EMAIL, once)

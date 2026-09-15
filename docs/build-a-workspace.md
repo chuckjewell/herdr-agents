@@ -2,7 +2,7 @@
 
 Use this only when the user asked you to create Herdr layout. Requires `HERDR_ENV=1`.
 
-**Load `skills/herdr/SKILL.md` first.** It is upstream v0.9.0 plus extras; that is the setup muscle. This file is only the seating chart: labels, kinds, cwd, `--no-focus`.
+**Load the official Herdr skill first** (`npx skills add herdrdev/herdr --skill herdr -g`). Team extras (tab titles, sticky `done`, live `get`) are in `agent-behavior`, not a herdr fork. This file is only the seating chart: labels, kinds, cwd, `--no-focus`.
 
 The installed binary is syntax authority. Run `herdr --help` and `herdr workspace` / `herdr tab` / `herdr agent` / `herdr pane` with **no subcommand** if flags may have changed. Never bare `herdr` (TUI attach).
 
