@@ -36,7 +36,7 @@ We treat those as operating bugs. The fix is **rooms + roles + packets + receipt
 | [`docs/build-a-workspace.md`](docs/build-a-workspace.md) | Agent-executable recipe: create workspace, tabs, start agents. |
 | [`docs/herdr-skill-delta.md`](docs/herdr-skill-delta.md) | What we changed vs upstream v0.9.0 and why (scars, not philosophy). |
 | [`docs/operating-loop.md`](docs/operating-loop.md) | Packets, harvest, dual review, Process, no-reset skill refresh. |
-| [`examples/`](examples/) | Concrete rosters and a packet skeleton. |
+| [`examples/`](examples/) | Concrete rosters and the EMAIL/packet skeleton (`FROM`/`TO`/`SUBJECT`). |
 | [`examples/AGENTS.snippet.md`](examples/AGENTS.snippet.md) | The **one block** to add to a product `AGENTS.md`. |
 | [`skills/herdr/`](skills/herdr/) | Canonical Herdr CLI skill (how an agent *drives* Herdr). |
 | [`skills/agent-behavior/`](skills/agent-behavior/) | Generic conductor loop (assign → harvest → wait). |

@@ -29,7 +29,11 @@ Portable team loop for Herdr (or any visible multi-agent layout). Product-specif
 
 ## Dispatch
 
-Before send: owner, paths, exact pins, mutation scope, acceptance, budget, receipt path, callback. Self-contained packet (`examples/packet.md` in herdr-agents). Existing named lanes before new agents.
+Every assignment and every worker FINAL is **EMAIL-shaped**: `FROM` / `TO` (pane ID or live name, not tab title) / `SUBJECT`, then pins, bounded `DO`/`DONT`, receipt path, callback. One packet, one owner, one overlapping surface. Full skeleton: `examples/packet.md` in herdr-agents.
+
+Headers do not deliver. Send with `herdr agent prompt` (or an explicit paste if Herdr is down). Worker ACK is full-read + hash MATCH when a sha256 was given. Worker FINAL is `VERDICT` + receipt path + sha256 after the last write, once.
+
+Before send: owner, paths, exact pins, mutation scope, acceptance, budget, receipt path, callback. Existing named lanes before new agents.
 
 Do not add a new ask to a lane that just delivered unless the next packet is already queued and orthogonal.
 
