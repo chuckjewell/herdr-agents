@@ -39,7 +39,7 @@ Do not add a new ask to a lane that just delivered unless the next packet is alr
 
 ## Onboard
 
-After layout exists (or after a **swap** in the same pane), the lead onboards each seat: herdr + agent-behavior + conduct path+sha256, EMAIL ACK of **role** (tab/roster, not vendor). Harvest ACKs before product packets. Quota/crash: exit the old CLI, run the new one in that terminal (Herdr detects it if the integration is installed), then onboard that pane again — same role. Details: `docs/onboarding.md`. Template: `examples/onboard-ack.md`.
+The lead is onboarded **the same way as every seat**: herdr + agent-behavior + conduct path+sha256, EMAIL ACK of **role** from the tab. Then the lead onboards the rest. After a swap (exit CLI, start another in that shell), onboard **that pane** again. Details: `docs/onboarding.md`. Template: `examples/onboard-ack.md`.
 
 ## Integration
 
