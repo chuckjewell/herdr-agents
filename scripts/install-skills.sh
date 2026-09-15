@@ -46,7 +46,9 @@ if [[ -n "$REPO" ]]; then
       link_skill "$REPO/.agents/skills/$s" "$REPO/.$vendor/skills/$s"
     done
   done
-  echo "Paste examples/AGENTS.snippet.md into $REPO/AGENTS.md (Codex always-on wire)."
+  printf '%s\n' "$KIT" > "$REPO/.agents/herdr-agents.path"
+  echo "Wrote $REPO/.agents/herdr-agents.path"
+  echo "Paste examples/AGENTS.snippet.md into $REPO/AGENTS.md and set HERDR_AGENTS_KIT: $KIT (Codex always-on)."
 fi
 
 echo "Done. Occupants already running do not hot-reload; send path+sha256 and require a full-read ACK."

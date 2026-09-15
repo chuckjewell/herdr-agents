@@ -30,13 +30,14 @@ Install integrations for every CLI you will run in a pane (Grok, Claude, Codex, 
 One canonical copy, then **symlinks**. Do not fork a skill per vendor.
 
 ```bash
-git clone <this-repo> ~/code/herdr-agents
+git clone <this-repo> ~/code/herdr-agents   # after you push; until then use the local path
 cd ~/code/herdr-agents
 chmod +x scripts/install-skills.sh
-./scripts/install-skills.sh --repo /path/to/your/product
+./scripts/install-skills.sh                          # user-global herdr for every client
+./scripts/install-skills.sh --repo /path/to/product  # team skills + .agents/herdr-agents.path
 ```
 
-Without `--repo`, only user-global `herdr` is linked.
+`--repo` also writes `HERDR_AGENTS_KIT` so occupants can find examples/docs from a product cwd.
 
 | Client | User-global | In the product repo (cwd) |
 |---|---|---|
@@ -52,45 +53,21 @@ Grok (and some others) also walk **`.agents/skills/`** from cwd to repo root. Th
 
 Already-running occupants do **not** hot-reload. Send path+sha256 and require a full-read ACK. Do not reset sessions.
 
-### 3. Put the team block in the product repo
+### 3. Open a Herdr pane and run **team-onboarding**
 
-Paste [`examples/AGENTS.snippet.md`](examples/AGENTS.snippet.md) into that repo’s `AGENTS.md`. Keep your product rules. This block is only Herdr-team law: WIP=1, EMAIL `FROM`/`TO`/`SUBJECT`, Process is not a third grade.
+User-global `herdr` skill must already be linked (step 2). Start any CLI in a pane, then load [`skills/team-onboarding/SKILL.md`](skills/team-onboarding/SKILL.md). That skill is the rest of standup:
 
-### 4. Team standup (design → Herdr → skills → lead → team)
+design session (your needs vs Os/App/OverSeer baselines) → write roster + AGENTS snippet (`HERDR_AGENTS_KIT`) → named workspace/tabs → **you** start the **lead** CLI → onboard lead like any seat → **you** start the other CLIs → lead onboards the team.
 
-Give a pane in Herdr the **`team-onboarding` skill** ([`skills/team-onboarding/SKILL.md`](skills/team-onboarding/SKILL.md)). It walks:
+Do not start agents for the user. One pane per agent; no nested subagents. Repeat this skill for each new workspace.
 
-1. Design session: their needs vs our Os/App/OverSeer baselines. Keep **our lead** unless they have a better concept.
-2. Write roster + AGENTS snippet + `install-skills.sh --repo` (shared herdr/conduct; role = tab name).
-3. Configure Herdr: named workspace, named tabs, one pane per agent. **Ask the user** to start their desired agent in each pane (integrations so Herdr recognizes `grok`/`codex`).
-4. Onboard the **lead like any seat** (EMAIL ACK of role). Then tell the lead to onboard the rest.
+Human index: [`docs/onboarding.md`](docs/onboarding.md). Baselines: [`docs/workspaces.md`](docs/workspaces.md). EMAIL day-to-day: [`skills/conduct/SKILL.md`](skills/conduct/SKILL.md) / [`examples/packet.md`](examples/packet.md). Loop: [`docs/operating-loop.md`](docs/operating-loop.md).
 
-Same skill again for a **new** workspace. Human index: [`docs/onboarding.md`](docs/onboarding.md).
+Prompt **pane ID** or **live agent name**, never a tab title. `idle` = ready seen; `done` = ready unseen (CLI read does not clear it); `working` = do not prompt; `blocked` = ask the user.
 
-### 5. Learn the two workgroups (optional, but the point of the examples)
+### 4. Day-to-day: **agent-behavior** pane onboard
 
-[`docs/workspaces.md`](docs/workspaces.md): **Os** = correctness factory (dual review + Process before merge). **App** = product/UI, same git root, **different WIP pool and merge owner**. **OverSeer** = only cross-workspace talker (Hermes crons that ping stuck leads). Invent yours from merge-object + who cannot self-grade.
-
-### 6. Run the team as EMAIL, not novels
-
-Every dispatch and every FINAL is mail-shaped. Occupants load that from [`skills/conduct/SKILL.md`](skills/conduct/SKILL.md). Fill-in template: [`examples/packet.md`](examples/packet.md).
-
-Loop: [`docs/operating-loop.md`](docs/operating-loop.md) — harvest receipts, dual independent review, Process written-law, one finalizer.
-
-Tab labels are cosmetic. Prompt **pane ID** (`w1:pD`) or **live agent name**, never “Sage” as a title.
-
-| `agent_status` | Meaning |
-|---|---|
-| `idle` | Ready and seen |
-| `done` | Ready, **unseen** — harvest; CLI read does not clear it |
-| `working` | Do not prompt |
-| `blocked` | Inspect UI; ask the user (upstream rule) |
-
-Runtime `done` ≠ packet done. A receipt not delivered (path+sha256) is not done.
-
-### 7. Day-to-day: agent skill (pane onboard)
-
-Swaps and new occupants use **`agent-behavior`** ([`skills/agent-behavior/SKILL.md`](skills/agent-behavior/SKILL.md) — Pane onboard), not team-onboarding. Exit Codex, run `grok` in that shell, tell the lead to onboard **that pane**. Same EMAIL ACK. Same role.
+Not team-onboarding. Exit Codex, run `grok` in that shell, tell the **lead** to onboard that pane ([`skills/agent-behavior/SKILL.md`](skills/agent-behavior/SKILL.md)). Same EMAIL ACK. Same role.
 
 ---
 
@@ -99,11 +76,11 @@ Swaps and new occupants use **`agent-behavior`** ([`skills/agent-behavior/SKILL.
 | Path | When you need it |
 |---|---|
 | [`scripts/install-skills.sh`](scripts/install-skills.sh) | Step 2 |
-| [`docs/build-a-workspace.md`](docs/build-a-workspace.md) | Step 4 (agent recipe) |
-| [`docs/workspaces.md`](docs/workspaces.md) | Step 5 |
-| [`docs/operating-loop.md`](docs/operating-loop.md) | Step 6 |
-| [`docs/onboarding.md`](docs/onboarding.md) | Human index for standup |
-| [`skills/team-onboarding/`](skills/team-onboarding/) | Walk: design session → rooms → skills → lead → team |
+| [`docs/build-a-workspace.md`](docs/build-a-workspace.md) | Layout recipe used by team-onboarding |
+| [`docs/workspaces.md`](docs/workspaces.md) | Os / App / OverSeer baselines |
+| [`docs/operating-loop.md`](docs/operating-loop.md) | Packets after standup |
+| [`docs/onboarding.md`](docs/onboarding.md) | Human index |
+| [`skills/team-onboarding/`](skills/team-onboarding/) | First standup walk |
 | [`docs/herdr-skill-delta.md`](docs/herdr-skill-delta.md) | What we inserted vs upstream |
 | [`examples/`](examples/) | Rosters, AGENTS snippet, EMAIL skeleton |
 | [`skills/herdr/`](skills/herdr/) | Drive Herdr |

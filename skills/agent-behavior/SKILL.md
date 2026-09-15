@@ -19,7 +19,7 @@ Skills supply method, not additional permission. Existing named lanes before new
 
 Not the first-time workspace standup (`team-onboarding`). Use this after a **new occupant** in an existing seat: swap, crash, first CLI in a pane the user just started.
 
-EMAIL that pane (`examples/onboard-ack.md`): herdr + this skill + conduct path+sha256; ACK **role from tab/roster**, not vendor. Harvest ACK before product packets. Do not prompt `working`.
+EMAIL that pane (`$HERDR_AGENTS_KIT/examples/onboard-ack.md`): herdr + this skill + conduct path+sha256; ACK **role from tab/roster**, not vendor. Harvest ACK before product packets. Do not prompt `working`.
 
 Swap: user exits the old CLI, starts the new one in that shell, asks the **lead** to onboard that pane. Same role. No team reset.
 

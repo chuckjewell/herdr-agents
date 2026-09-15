@@ -29,7 +29,7 @@ Portable team loop for Herdr (or any visible multi-agent layout). Product-specif
 
 ## Dispatch
 
-Every assignment and every worker FINAL is **EMAIL-shaped**: `FROM` / `TO` (pane ID or live name, not tab title) / `SUBJECT`, then pins, bounded `DO`/`DONT`, receipt path, callback. One packet, one owner, one overlapping surface. Full skeleton: `examples/packet.md` in herdr-agents.
+Every assignment and every worker FINAL is **EMAIL-shaped**: `FROM` / `TO` (pane ID or live name, not tab title) / `SUBJECT`, then pins, bounded `DO`/`DONT`, receipt path, callback. One packet, one owner, one overlapping surface. Full skeleton: `$HERDR_AGENTS_KIT/examples/packet.md`.
 
 Headers do not deliver. Send with `herdr agent prompt` (or an explicit paste if Herdr is down). Worker ACK is full-read + hash MATCH when a sha256 was given. Worker FINAL is `VERDICT` + receipt path + sha256 after the last write, once.
 
@@ -39,7 +39,7 @@ Do not add a new ask to a lane that just delivered unless the next packet is alr
 
 ## Onboard
 
-Standup: `skills/team-onboarding/SKILL.md`. Day-to-day pane (swap, new occupant): `skills/agent-behavior/SKILL.md` Pane onboard. Template: `examples/onboard-ack.md`.
+Standup: `team-onboarding`. Day-to-day pane: `agent-behavior` Pane onboard. Template: `$HERDR_AGENTS_KIT/examples/onboard-ack.md`. Kit path: AGENTS.md `HERDR_AGENTS_KIT` or `.agents/herdr-agents.path`.
 
 ## Integration
 

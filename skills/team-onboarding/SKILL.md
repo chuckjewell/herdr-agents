@@ -12,13 +12,13 @@ description: >
 
 You are running a **design session then a standup**, not a product packet. Do not merge, do not invent busywork, do not nest vendor subagents.
 
-Load `skills/herdr/SKILL.md` before any `herdr` mutate. EMAIL format lives in `skills/conduct` — do not restate it here. Templates: `examples/onboard-ack.md`, `examples/packet.md`.
+Load `skills/herdr/SKILL.md` before any `herdr` mutate. EMAIL format lives in `skills/conduct`. Templates and baselines live in **HERDR_AGENTS_KIT** (AGENTS.md `HERDR_AGENTS_KIT`, or `.agents/herdr-agents.path`, or ask the human and write that file). Do not resolve `examples/` relative to the product cwd.
 
 Each **new workspace** (Os, App, OverSeer, a friend's team) repeats this whole skill. Do not skip the design session because "we already have Os."
 
 ## 1. Design session (needs vs baselines)
 
-Talk to the human. Baselines (examples, not a clone mandate):
+Talk to the human. Baselines under `$HERDR_AGENTS_KIT` (examples, not a clone mandate):
 
 - `docs/workspaces.md` — workgroups, OverSeer as only cross-workspace talker
 - `examples/noveon-os.md` — engine/correctness factory
@@ -50,26 +50,23 @@ Do not write a unique SKILL.md per tab. Seats share herdr + conduct; role comes 
 
 ## 3. Configure Herdr from the roster
 
-Integrations first (`herdr integration status` / `herdr integration install …`, or Herdr setup menu). Then `docs/build-a-workspace.md`:
+Integrations first (`herdr integration status` / `herdr integration install …`, or Herdr setup menu). Then `$HERDR_AGENTS_KIT/docs/build-a-workspace.md`:
 
 - One workspace per workgroup
 - One tab per seat, **named for the agent/role**
 - One pane per agent; leave each tab at a **shell prompt**
-- **Ask the user** to start their desired agent in each pane (`grok`, `claude`, `codex`, …). Do not start CLIs for them unless they asked
-- Herdr recognizes the kind if the integration is installed
 - `herdr agent start` only if you just **split** a sibling pane
+- `--no-focus`. Do not steal the user's tab. Do not close panes you did not create.
 
-`--no-focus`. Do not steal the user's tab. Do not close panes you did not create. Wait until occupants are live (`herdr agent get`) before step 4.
+**Ask the user** to start their desired agent in the **lead pane first** (`grok`, `claude`, `codex`, …). Do not start CLIs for them. Wait until `herdr agent get` shows that occupant live, then step 4.
 
 ## 4. Onboard the lead (same as everyone)
 
-The lead tab is already named. EMAIL that **pane ID** the onboard packet (`examples/onboard-ack.md`): read herdr + agent-behavior + conduct, hash ACK, state **role from the tab**, idle. That *is* lead onboard. No extra ceremony.
+EMAIL the lead **pane ID** (`$HERDR_AGENTS_KIT/examples/onboard-ack.md`): read herdr + agent-behavior + conduct, hash ACK, state **role from the tab**, idle. That *is* lead onboard. No extra ceremony. Harvest ACK or they are not onboarded.
 
-Harvest the EMAIL ACK. If none, they are not onboarded.
+## 5. User starts the rest; lead onboards them
 
-## 5. Lead onboards the team
-
-EMAIL the lead: onboard every other pane in this workspace the same way; harvest ACKs; then idle. You (setup agent) do not dual-prompt seats unless the lead is unavailable.
+Ask the user to start the desired CLI in every other pane. Then EMAIL the lead: onboard those panes the same way; harvest ACKs; idle. You (setup agent) do not dual-prompt seats unless the lead is unavailable.
 
 Product packets only after the roll-call is in.
 

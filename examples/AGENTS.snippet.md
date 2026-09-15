@@ -5,6 +5,7 @@ Copy this **block** into the product repo your Herdr panes `cwd` into. Do not re
 ```
 ## Herdr team (layout lives in Herdr; law lives here)
 
+HERDR_AGENTS_KIT: /absolute/path/to/herdr-agents
 HERDR: named workspace + one pane per agent. Prompt pane ID or live agent name, never tab label. No vendor nested subagents (Herdr cannot track them; parent looks idle and new work queues).
 WIP=1 per lane. Do not prompt working panes. Runtime done ≠ receipt delivered.
 PACKET: FROM/TO/SUBJECT, exact pins, bounded DO, durable receipt path, one callback with sha256.
