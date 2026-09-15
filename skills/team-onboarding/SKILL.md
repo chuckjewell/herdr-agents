@@ -40,9 +40,18 @@ Baselines to steal from (not a clone mandate): `$HERDR_AGENTS_KIT/docs/workspace
 
 **Use-case extra seat:** if a kit skill or a product skill would make the team better (web → UI tester; data → spreadsheet seat; docs → writer), **name it** and say why. That is an extra tab + optional repo skill on that occupant — not a unique fork of herdr/conduct.
 
-Write the roster in the product repo (markdown, not only chat): workspace label, cwd, tab = seat, job / authority / ban, suggested CLI kind (role is the tab, not the vendor).
+Write the roster in the product repo (markdown, not only chat): workspace label, cwd, tab = seat, job / authority / ban, suggested CLI kind (role is the tab, not the vendor), **skills on that seat** (official herdr + agent-behavior minimum; process on Process; extra product skills e.g. `dev-browser` on a UI tester). Equip them with our kit quality or better for the use case — do not stand up a thinner occupant than Lead/Builder in our baselines.
 
-Expect **back and forth** until they are **comfortable**: seats, kinds, extras, what to drop. Iterate the file. First draft is not final. Do not copy a 12-tab Os for a three-seat job.
+**Loop fit:** read `$HERDR_AGENTS_KIT/docs/conductor-loop.md` (human story; you use it here as the checklist). Our loop needs: a lead who sequences and merges; EMAIL packets; WIP=1; independent review of builder work; Process (occupant or human); no nested subagents.
+
+If the roster **cannot** run that loop, say so and **propose loop changes** before go-ahead, for example:
+
+- Lead+Builder only → human reviews, or lead is not independent; edit `conduct` / AGENTS snippet (single review or human Process).
+- No Process seat → human Process, or drop Process from the merge gate.
+- One reviewer, not dual → change dual ACCEPT to one ACCEPT in `conduct`.
+- Extra specialist (UI tester) → they are a builder-like lane, not a substitute for independent review of their own output.
+
+Get a yes on **both** the roster **and** any loop edits. Iterate until they are comfortable.
 
 **Do not create anything in Herdr** until they explicitly say the team is **ready to build** (go-ahead). “Looks ok” / a shrug is not go-ahead. After go-ahead, step 2 then 3.
 
@@ -55,7 +64,7 @@ In the product checkout (cwd the panes will use):
 3. Save the roster next to it (copy Os/App examples and edit).
 4. Process seat also loads `skills/process`. Advice seat does not get merge authority.
 
-Do not write a unique SKILL.md per tab. Seats share herdr + conduct; role comes from the **tab name + roster**.
+Do not write a unique SKILL.md per tab unless it is a real extra (e.g. `dev-browser` for UI tester). Seats share official herdr + agent-behavior; product packets use `conduct`. Role comes from the **tab name + roster**. If step 1 agreed loop edits, apply them to `conduct` / AGENTS snippet **now**, before layout.
 
 ## 3. Configure Herdr from the roster
 

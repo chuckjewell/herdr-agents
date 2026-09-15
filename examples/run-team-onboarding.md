@@ -4,7 +4,7 @@ This is a **planning / air traffic control (ATC)** job. Use a **strong** model (
 
 It is **not one paste and done.** You will talk to it several times. That is the design.
 
-**Team makeup is a conversation.** It should ask what kind of project this is, **propose a starter roster** (and an extra seat if it helps — e.g. UI tester on a web app), and iterate until you are comfortable. Do not let it create Herdr tabs until you explicitly say the team is **ready to build**.
+**Team makeup is a conversation.** It should ask what kind of project this is, **propose a starter roster** (and an extra seat/skill if it helps — e.g. UI tester + `dev-browser` on a web app), equip seats at kit quality or better, and check the roster against **our loop**. If the team cannot dual-review / Process / WIP=1, it should **propose loop changes** (`conduct` / AGENTS) and get your yes. Do not let it create Herdr tabs until you explicitly say the team is **ready to build**.
 
 1. In Herdr, open a pane. Start that agent in the shell (`grok`, `claude`, `codex`, …).
 2. Official Herdr skill already installed (`npx skills add herdrdev/herdr --skill herdr -g`). Team extras are in agent-behavior, not a herdr fork.
